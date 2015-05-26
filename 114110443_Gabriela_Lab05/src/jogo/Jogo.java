@@ -2,6 +2,8 @@ package jogo;
 
 import java.util.HashSet;
 
+import usuario.Usuario;
+
 public class Jogo {
 
 	private String nome;
@@ -10,7 +12,9 @@ public class Jogo {
 	private int quantidadeJogada;
 	private int quantidadeZerada;
 	private HashSet<String> jogabilidade;
-	
+
+	final String EOL = System.getProperty("line.separator");
+
 	public Jogo(String nome, double preco) {
 		this.nome = nome;
 		this.preco = preco;
@@ -19,14 +23,22 @@ public class Jogo {
 		this.quantidadeZerada = 0;
 		this.jogabilidade = new HashSet<String>();
 	}
-	
-	public boolean joga(int score){
-		if (score > this.highScore){
+
+	@Override
+	public String toString() {
+		return "+ " + this.nome + " - " + this.getClass() + EOL + "==> Jogou "
+				+ this.quantidadeJogada + " vez(es)" + EOL + "==> Zerou "
+				+ this.quantidadeZerada + " vez(es)" + EOL + "Maior score: "
+				+ this.highScore;
+	}
+
+	public boolean joga(int score) {
+		if (score > this.highScore) {
 			this.highScore = score;
 		}
 		return true;
 	}
-		
+
 	public String getNome() {
 		return nome;
 	}
@@ -34,35 +46,35 @@ public class Jogo {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
 	public double getPreco() {
 		return preco;
 	}
-	
+
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
-	
+
 	public int getHighScore() {
 		return highScore;
 	}
-	
+
 	public void setHighScore(int highScore) {
 		this.highScore = highScore;
 	}
-	
+
 	public int getQuantidadeJogada() {
 		return quantidadeJogada;
 	}
-	
+
 	public void setQuantidadeJogada(int quantidadeJogada) {
 		this.quantidadeJogada = quantidadeJogada;
 	}
-	
+
 	public int getQuantidadeZerada() {
 		return quantidadeZerada;
 	}
-	
+
 	public void setQuantidadeZerada(int quantidadeZerada) {
 		this.quantidadeZerada = quantidadeZerada;
 	}
@@ -80,14 +92,14 @@ public class Jogo {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj instanceof Jogo){
-			Jogo outroJogo = (Jogo)obj;
-			if (outroJogo.getNome().equals(this.getNome()) && outroJogo.getPreco() == this.getPreco()){
+		if (obj instanceof Jogo) {
+			Jogo outroJogo = (Jogo) obj;
+			if (outroJogo.getNome().equals(this.getNome())
+					&& outroJogo.getPreco() == this.getPreco()) {
 				return true;
 			}
 		}
 		return false;
 	}
-	
-	
+
 }

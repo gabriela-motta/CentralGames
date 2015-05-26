@@ -1,9 +1,21 @@
 package loja;
 
+import java.util.ArrayList;
+import usuario.Usuario;
+
 public class Loja {
+	
+	private ArrayList<Usuario> usuarios;
 
-	public Loja() {
-
+	public void criaUsuario(){
+		
 	}
-
+	
+	public void criaJogo(){
+		
+	}
+	
+	public void imprimeUsuarios(){
+		System.out.println(usuarios);
+	}
 }
