@@ -28,15 +28,16 @@ public class Jogo {
 	public String toString() {
 		return "+ " + this.nome + " - " + this.getClass() + EOL + "==> Jogou "
 				+ this.quantidadeJogada + " vez(es)" + EOL + "==> Zerou "
-				+ this.quantidadeZerada + " vez(es)" + EOL + "Maior score: "
-				+ this.highScore;
+				+ this.quantidadeZerada + " vez(es)" + EOL
+				+ "==> Maior score: " + this.highScore + EOL;
 	}
 
 	public boolean joga(int score) {
+		this.quantidadeJogada = this.quantidadeJogada + 1;
 		if (score > this.highScore) {
 			this.highScore = score;
 		}
-		return true;
+		return false;
 	}
 
 	public String getNome() {

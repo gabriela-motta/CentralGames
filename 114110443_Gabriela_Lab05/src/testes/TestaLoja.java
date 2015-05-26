@@ -1,19 +1,18 @@
 package testes;
 
-import static org.junit.Assert.*;
-
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 public class TestaLoja {
 
 	@Before
-	public void setUp() throws Exception {
+	public void setUp(){
 	}
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		
 	}
 
 }

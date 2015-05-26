@@ -8,6 +8,7 @@ public class Usuario {
 	private String nome;
 	private String login;
 	private ArrayList<Jogo> jogosComprados;
+	private double totalPreco;
 	private double quantidadeDinheiro;
 
 	final String EOL = System.getProperty("line.separator");
@@ -16,13 +17,15 @@ public class Usuario {
 		this.nome = nome;
 		this.login = login;
 		this.jogosComprados = new ArrayList<Jogo>();
+		this.totalPreco = 0;
 		this.quantidadeDinheiro = 0;
 	}
 
 	@Override
 	public String toString() {
 		return this.login + EOL + this.nome + " - Jogador " + this.getClass()
-				+ EOL + "Lista de Jogos:" + EOL + this.getJogosComprados();
+				+ EOL + "Lista de Jogos:" + EOL + this.getJogosComprados()
+				+ EOL + "Total de preco dos jogos: R$ " + this.totalPreco + EOL;
 	}
 
 	public String getNome() {
