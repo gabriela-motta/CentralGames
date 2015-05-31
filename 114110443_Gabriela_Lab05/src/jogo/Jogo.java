@@ -2,16 +2,14 @@ package jogo;
 
 import java.util.HashSet;
 
-import usuario.Usuario;
+public abstract class Jogo {
 
-public class Jogo {
-
-	private String nome;
-	private double preco;
-	private int highScore;
-	private int quantidadeJogada;
-	private int quantidadeZerada;
-	private HashSet<String> jogabilidade;
+	protected String nome;
+	protected double preco;
+	protected int highScore;
+	protected int quantidadeJogada;
+	protected int quantidadeZerada;
+	protected HashSet<String> jogabilidade;
 
 	final String EOL = System.getProperty("line.separator");
 
@@ -32,12 +30,14 @@ public class Jogo {
 				+ "==> Maior score: " + this.highScore + EOL;
 	}
 
-	public boolean joga(int score) {
+	public void joga(int score, boolean zerou) {
 		this.quantidadeJogada = this.quantidadeJogada + 1;
+		if (zerou){
+			this.quantidadeZerada = this.quantidadeZerada + 1;
+		}
 		if (score > this.highScore) {
 			this.highScore = score;
 		}
-		return false;
 	}
 
 	public String getNome() {

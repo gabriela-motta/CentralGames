@@ -9,20 +9,18 @@ import org.junit.Test;
 
 public class TestaJogo {
 
-	private Jogo jogo1;
 	private Jogo jogo2;
 
 	@Before
 	public void setUp() {
-		jogo1 = new Jogo("Flappy Bird", 3.99);
 		jogo2 = new Plataforma("Jetpack Run", 2.0);
 	}
 
 	@Test
 	public void testConstrutor() {
 		try {
-			Assert.assertEquals("Flappy Bird", jogo1.getNome());
-			Assert.assertEquals(3.99, jogo1.getPreco(), 0.001);
+			Assert.assertEquals("Jetpack Run", jogo2.getNome());
+			Assert.assertEquals(2.0, jogo2.getPreco(), 0.001);
 
 		} catch (Exception e) {
 			Assert.fail();
@@ -31,9 +29,10 @@ public class TestaJogo {
 
 	@Test
 	public void testaJoga() {
-		try {
-			jogo1.joga(100);
-			Assert.assertEquals(1, jogo1.getQuantidadeJogada());
+		try {			
+			jogo2.joga(100, false);
+			Assert.assertEquals(100, jogo2.getHighScore());
+			Assert.assertEquals(0, jogo2.getQuantidadeZerada());
 			
 		} catch (Exception e) {
 			Assert.fail();

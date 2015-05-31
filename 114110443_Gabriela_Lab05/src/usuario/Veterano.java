@@ -6,4 +6,11 @@ public class Veterano extends Usuario {
 		super(nome, login);
 	}
 
+	@Override
+	public double disconto(double preco) {
+		double percentual = 0.2;
+		double aPagar = preco - (preco * percentual);
+		return aPagar;
+	}
+
 }

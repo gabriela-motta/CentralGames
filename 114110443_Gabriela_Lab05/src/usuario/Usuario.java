@@ -4,12 +4,13 @@ import java.util.ArrayList;
 
 import jogo.Jogo;
 
-public class Usuario {
-	private String nome;
-	private String login;
-	private ArrayList<Jogo> jogosComprados;
-	private double totalPreco;
-	private double quantidadeDinheiro;
+public abstract class Usuario {
+	protected String nome;
+	protected String login;
+	protected ArrayList<Jogo> jogosComprados;
+	protected double totalPreco;
+	protected double quantidadeDinheiro;
+	protected int x2p;
 
 	final String EOL = System.getProperty("line.separator");
 
@@ -19,13 +20,17 @@ public class Usuario {
 		this.jogosComprados = new ArrayList<Jogo>();
 		this.totalPreco = 0;
 		this.quantidadeDinheiro = 0;
+		this.x2p = 0;
 	}
+	
+	public abstract double disconto(double preco);
 
 	@Override
 	public String toString() {
-		return this.login + EOL + this.nome + " - Jogador " + this.getClass()
-				+ EOL + "Lista de Jogos:" + EOL + this.getJogosComprados()
-				+ EOL + "Total de preco dos jogos: R$ " + this.totalPreco + EOL;
+		return this.login + EOL + this.nome + EOL + "Jogador "
+				+ this.getClass() + ": " + this.x2p + " x2p" + EOL
+				+ "Lista de Jogos:" + EOL + this.getJogosComprados() + EOL
+				+ "Total de preco dos jogos: R$ " + this.totalPreco + EOL;
 	}
 
 	public String getNome() {
@@ -58,6 +63,22 @@ public class Usuario {
 
 	public void setQuantidadeDinheiro(double quantidadeDinheiro) {
 		this.quantidadeDinheiro = quantidadeDinheiro;
+	}
+
+	public double getTotalPreco() {
+		return totalPreco;
+	}
+
+	public void setTotalPreco(double totalPreco) {
+		this.totalPreco = totalPreco;
+	}
+
+	public int getX2p() {
+		return x2p;
+	}
+
+	public void setX2p(int x2p) {
+		this.x2p = x2p;
 	}
 
 	@Override
