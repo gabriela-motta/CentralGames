@@ -1,9 +1,8 @@
 package loja;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 
+import jogo.Jogo;
 import usuario.Noob;
 import usuario.Usuario;
 
@@ -11,21 +10,17 @@ public class Loja {
 
 	private ArrayList<Usuario> usuarios;
 	private double totalArrecadado;
-	private HashMap<String, Double> tabelaPrecos;
+	private JogoFactory fabricaDeJogos;
 
 	public Loja() {
 		this.usuarios = new ArrayList<Usuario>();
 		this.totalArrecadado = 0;
-		this.tabelaPrecos = new HashMap<String, Double>();
+		this.fabricaDeJogos = new JogoFactory();
 	}
 
 	public void criaUsuario(String nome, String login) {
 		Usuario novo = new Noob(nome, login);
 		this.usuarios.add(novo);
-	}
-
-	public void adicionaNaTabela(String nome, double preco) {
-		this.tabelaPrecos.put(nome, preco);
 	}
 
 	public void adicionaDinheiro(String nome, double valor) {
@@ -37,26 +32,18 @@ public class Loja {
 		}
 	}
 
-	public void criaJogo(String nome, double preco, String tipo,
-			HashSet<String> jogabilidade) {
-
+	public Jogo criaJogo(String nome, double preco, String tipo) {
+		return fabricaDeJogos.criaJogo(nome, preco, tipo);
 	}
 
-	public void adicionaJogo(String nome, String jogo) {
-		double precoJogo = tabelaPrecos.get(jogo);
-
+	/*public void adicionaJogo(String nome, String jogo) {
+		
 		for (Usuario user : usuarios) {
 			if (user.getNome().equals(nome)) {
 				if (user.getQuantidadeDinheiro() >= precoJogo) {
 					double quantia = user.getQuantidadeDinheiro()
 							- user.disconto(precoJogo);
 					user.setQuantidadeDinheiro(quantia);
-
-					/*
-					 * Jogo novo = new Jogo(jogo, precoJogo); ArrayList<Jogo>
-					 * lista = user.getJogosComprados(); lista.add(novo);
-					 * user.setJogosComprados(lista);
-					 */
 
 					int pontos = user.getX2p() + (int) (10 * precoJogo);
 					user.setX2p(pontos);
@@ -66,12 +53,12 @@ public class Loja {
 			}
 		}
 
-	}
+	}*/
 
 	public void imprimeUsuarios() {
 		System.out.println("=== Central P2-CG ===");
 		System.out.println(usuarios);
-		System.out.println("нннннннннннннннннннннннннннннннннннннннннннн");
+		System.out.println("-------------------------------");
 		System.out.println("Total arrecadado com vendas de jogos: R$ "
 				+ this.totalArrecadado);
 	}
