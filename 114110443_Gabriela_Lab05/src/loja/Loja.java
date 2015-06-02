@@ -1,8 +1,12 @@
 package loja;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
+import exceptions.DadoInvalidoException;
+import jogo.Jogabilidade;
 import jogo.Jogo;
+import jogo.JogoFactory;
 import usuario.Noob;
 import usuario.Usuario;
 
@@ -19,8 +23,13 @@ public class Loja {
 	}
 
 	public void criaUsuario(String nome, String login) {
-		Usuario novo = new Noob(nome, login);
-		this.usuarios.add(novo);
+		try {
+			Usuario novo = new Noob(nome, login);
+			this.usuarios.add(novo);
+			
+		} catch (DadoInvalidoException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 	public void adicionaDinheiro(String nome, double valor) {
@@ -32,28 +41,25 @@ public class Loja {
 		}
 	}
 
-	public Jogo criaJogo(String nome, double preco, String tipo) {
-		return fabricaDeJogos.criaJogo(nome, preco, tipo);
+	public Jogo criaJogo(String nome, double preco, String tipo,
+			HashSet<Jogabilidade> jogabilidade) {
+		return fabricaDeJogos.criaJogo(nome, preco, tipo, jogabilidade);
 	}
 
-	/*public void adicionaJogo(String nome, String jogo) {
-		
-		for (Usuario user : usuarios) {
-			if (user.getNome().equals(nome)) {
-				if (user.getQuantidadeDinheiro() >= precoJogo) {
-					double quantia = user.getQuantidadeDinheiro()
-							- user.disconto(precoJogo);
-					user.setQuantidadeDinheiro(quantia);
-
-					int pontos = user.getX2p() + (int) (10 * precoJogo);
-					user.setX2p(pontos);
-
-					totalArrecadado = totalArrecadado + quantia;
-				}
-			}
-		}
-
-	}*/
+	/*
+	 * public void adicionaJogo(String nome, String jogo) {
+	 * 
+	 * for (Usuario user : usuarios) { if (user.getNome().equals(nome)) { if
+	 * (user.getQuantidadeDinheiro() >= precoJogo) { double quantia =
+	 * user.getQuantidadeDinheiro() - user.disconto(precoJogo);
+	 * user.setQuantidadeDinheiro(quantia);
+	 * 
+	 * int pontos = user.getX2p() + (int) (10 * precoJogo); user.setX2p(pontos);
+	 * 
+	 * totalArrecadado = totalArrecadado + quantia; } } }
+	 * 
+	 * }
+	 */
 
 	public void imprimeUsuarios() {
 		System.out.println("=== Central P2-CG ===");

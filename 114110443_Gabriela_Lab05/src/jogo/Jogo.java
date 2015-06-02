@@ -2,6 +2,8 @@ package jogo;
 
 import java.util.HashSet;
 
+import exceptions.DadoInvalidoException;
+
 public abstract class Jogo {
 
 	protected String nome;
@@ -9,17 +11,20 @@ public abstract class Jogo {
 	protected int highScore;
 	protected int quantidadeJogada;
 	protected int quantidadeZerada;
-	protected HashSet<String> jogabilidade;
+	protected HashSet<Jogabilidade> jogabilidade;
 
 	final String EOL = System.getProperty("line.separator");
 
-	public Jogo(String nome, double preco) {
+	public Jogo(String nome, double preco, HashSet<Jogabilidade> jogabilidade) throws DadoInvalidoException {
+		if (nome.equals("")){
+			throw new DadoInvalidoException("Nome nao pode ser vazio");
+		}
 		this.nome = nome;
 		this.preco = preco;
 		this.highScore = 0;
 		this.quantidadeJogada = 0;
 		this.quantidadeZerada = 0;
-		this.jogabilidade = new HashSet<String>();
+		this.jogabilidade = jogabilidade;
 	}
 
 	@Override

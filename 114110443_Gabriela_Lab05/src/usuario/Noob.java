@@ -1,8 +1,10 @@
 package usuario;
 
+import exceptions.DadoInvalidoException;
+
 public class Noob extends Usuario {
 
-	public Noob(String nome, String login) {
+	public Noob(String nome, String login) throws DadoInvalidoException {
 		super(nome, login);
 	}
 

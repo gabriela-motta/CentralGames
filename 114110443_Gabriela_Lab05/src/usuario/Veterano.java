@@ -1,8 +1,10 @@
 package usuario;
 
+import exceptions.DadoInvalidoException;
+
 public class Veterano extends Usuario {
 
-	public Veterano(String nome, String login) {
+	public Veterano(String nome, String login) throws DadoInvalidoException {
 		super(nome, login);
 	}
 

@@ -2,6 +2,7 @@ package usuario;
 
 import java.util.ArrayList;
 
+import exceptions.DadoInvalidoException;
 import jogo.Jogo;
 
 public abstract class Usuario {
@@ -14,7 +15,10 @@ public abstract class Usuario {
 
 	final String EOL = System.getProperty("line.separator");
 
-	public Usuario(String nome, String login) {
+	public Usuario(String nome, String login) throws DadoInvalidoException {
+		if (nome.equals("")){
+			throw new DadoInvalidoException("Nome nao pode ser vazio");
+		}
 		this.nome = nome;
 		this.login = login;
 		this.jogosComprados = new ArrayList<Jogo>();
