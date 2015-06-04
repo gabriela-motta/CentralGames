@@ -11,8 +11,8 @@ public class RPG extends Jogo {
 		super(nome, preco, jogabilidade);
 	}
 
-	@Override
-	public void joga(int score, boolean zerou) {
+	public int joga(int score, boolean zerou) {
+		int pontosExtras = 0;
 		quantidadeJogada = quantidadeJogada + 1;
 		if (zerou) {
 			quantidadeZerada = quantidadeZerada + 1;
@@ -20,7 +20,8 @@ public class RPG extends Jogo {
 		if (score > highScore) {
 			highScore = score;
 		}
-		totalPontos = 10 * quantidadeJogada;
+		pontosExtras = 10 * quantidadeJogada;
+		return pontosExtras;
 	}
 
 	public String toString() {

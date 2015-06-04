@@ -11,16 +11,17 @@ public class Luta extends Jogo {
 		super(nome, preco, jogabilidade);
 	}
 
-	@Override
-	public void joga(int score, boolean zerou) {
+	public int joga(int score, boolean zerou) {
+		int pontosExtras = 0;
 		quantidadeJogada = quantidadeJogada + 1;
 		if (zerou) {
 			quantidadeZerada = quantidadeZerada + 1;
 		}
 		if (score > highScore) {
 			highScore = score;
+			pontosExtras = highScore / 1000;
 		}
-		totalPontos = totalPontos + (highScore / 1000);
+		return pontosExtras;
 	}
 
 	public String toString() {

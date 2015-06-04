@@ -11,8 +11,8 @@ public class Plataforma extends Jogo {
 		super(nome, preco, jogabilidade);
 	}
 
-	@Override
-	public void joga(int score, boolean zerou) {
+	public int joga(int score, boolean zerou) {
+		int pontosExtras = 0;
 		quantidadeJogada = quantidadeJogada + 1;
 		if (zerou) {
 			quantidadeZerada = quantidadeZerada + 1;
@@ -20,7 +20,8 @@ public class Plataforma extends Jogo {
 		if (score > highScore) {
 			highScore = score;
 		}
-		totalPontos = 20 * quantidadeZerada;
+		pontosExtras = 20 * quantidadeZerada;
+		return pontosExtras;
 	}
 
 	public String toString() {

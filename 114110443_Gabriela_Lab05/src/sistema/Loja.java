@@ -38,16 +38,23 @@ public class Loja {
 		}
 	}
 
+	public Jogo criaJogo(String nome, double preco, String tipo,
+			HashSet<Jogabilidade> jogabilidades) {
+		return fabricaDeJogos.criaJogo(nome, preco, tipo, jogabilidades);
+	}
+
 	public void vendeJogo(String nomeUsuario, String nomeJogo, String tipoJogo,
 			double precoJogo, HashSet<Jogabilidade> jogabilidades) {
 		try {
 			for (Usuario user : usuarios) {
 				if (user.getNome().equals(nomeUsuario)) {
-					Jogo novoJogo = fabricaDeJogos.criaJogo(nomeJogo,
-							precoJogo, tipoJogo, jogabilidades);
-					user.adicionaJogo(novoJogo);
-					this.totalArrecadado = this.totalArrecadado
-							+ user.calculaPreco(precoJogo);
+					if (user.getQuantidadeDinheiro() >= precoJogo) {
+						Jogo novoJogo = criaJogo(nomeJogo, precoJogo, tipoJogo,
+								jogabilidades);
+						user.adicionaJogo(novoJogo);
+						this.totalArrecadado = this.totalArrecadado
+								+ user.calculaPreco(precoJogo);
+					}
 				}
 			}
 
@@ -68,8 +75,12 @@ public class Loja {
 
 	public String toString() {
 		final String EOL = System.getProperty("line.separator");
+		String mensagemUsuarios = "";
+		for (Usuario u : usuarios) {
+			mensagemUsuarios = mensagemUsuarios + u.toString() + EOL;
+		}
 
-		return "=== Central P2-CG ===" + EOL + usuarios + EOL
+		return "=== Central P2-CG ===" + EOL + mensagemUsuarios
 				+ "-------------------------------" + EOL
 				+ "Total arrecadado com vendas de jogos: R$ "
 				+ this.totalArrecadado;

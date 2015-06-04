@@ -51,17 +51,14 @@ public class TestaJogo {
 			Assert.assertEquals("Burrito", jogo1.getNome());
 			Assert.assertEquals(100, jogo1.getPreco(), 0.1);
 			Assert.assertEquals(j1, jogo1.getJogabilidade());
-			Assert.assertEquals(0, jogo1.getTotalPontos());
 
 			Assert.assertEquals("Fight", jogo2.getNome());
 			Assert.assertEquals(50, jogo2.getPreco(), 0.1);
 			Assert.assertEquals(j2, jogo2.getJogabilidade());
-			Assert.assertEquals(0, jogo2.getTotalPontos());
 
 			Assert.assertEquals("Medieval", jogo3.getNome());
 			Assert.assertEquals(70, jogo3.getPreco(), 0.1);
 			Assert.assertEquals(j3, jogo3.getJogabilidade());
-			Assert.assertEquals(0, jogo3.getTotalPontos());
 
 		} catch (Exception e) {
 			Assert.fail();
@@ -90,35 +87,24 @@ public class TestaJogo {
 	@Test
 	public void testaJoga() {
 		try {
-			jogo1.joga(600, false);
+			Assert.assertEquals(0, jogo1.joga(600, false));
 			Assert.assertEquals(1, jogo1.getQuantidadeJogada());
 			Assert.assertEquals(600, jogo1.getHighScore());
 			Assert.assertEquals(0, jogo1.getQuantidadeZerada());
-			Assert.assertEquals(0, jogo1.getTotalPontos());
 
-			jogo1.joga(200, true);
+			Assert.assertEquals(20, jogo1.joga(200, true));
 			Assert.assertEquals(2, jogo1.getQuantidadeJogada());
 			Assert.assertEquals(600, jogo1.getHighScore());
 			Assert.assertEquals(1, jogo1.getQuantidadeZerada());
-			Assert.assertEquals(20, jogo1.getTotalPontos());
 
-			jogo1.joga(601, false);
+			Assert.assertEquals(40, jogo1.joga(601, true));
 			Assert.assertEquals(3, jogo1.getQuantidadeJogada());
 			Assert.assertEquals(601, jogo1.getHighScore());
-			Assert.assertEquals(1, jogo1.getQuantidadeZerada());
-			Assert.assertEquals(20, jogo1.getTotalPontos());
+			Assert.assertEquals(2, jogo1.getQuantidadeZerada());
 			
-			jogo2.joga(3000, false);
-			Assert.assertEquals(3, jogo2.getTotalPontos());
+			Assert.assertEquals(3, jogo2.joga(3000, false));
 			
-			jogo2.joga(4000, false);
-			Assert.assertEquals(7, jogo2.getTotalPontos());
-			
-			jogo3.joga(400, false);
-			Assert.assertEquals(10, jogo3.getTotalPontos());
-			
-			jogo3.joga(200, true);
-			Assert.assertEquals(20, jogo3.getTotalPontos());
+			Assert.assertEquals(10, jogo3.joga(400, false));
 
 		} catch (Exception e) {
 			Assert.fail();

@@ -4,7 +4,9 @@ import java.util.HashSet;
 
 import jogo.Jogabilidade;
 import jogo.Jogo;
+import jogo.Luta;
 import jogo.Plataforma;
+import jogo.RPG;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -22,7 +24,11 @@ public class TestaUsuario {
 	private Usuario user3;
 	private Usuario user4;
 	private Jogo jogo1;
+	private Jogo jogo2;
+	private Jogo jogo3;
 	private HashSet<Jogabilidade> j1;
+	private HashSet<Jogabilidade> j2;
+	private HashSet<Jogabilidade> j3;
 
 	@Before
 	public void setUp() {
@@ -31,8 +37,20 @@ public class TestaUsuario {
 			user2 = new Veterano("Joao", "j123");
 
 			j1 = new HashSet<>();
-			j1.add(Jogabilidade.ONLINE);
+			j1.add(Jogabilidade.COMPETITIVO);
+			j1.add(Jogabilidade.OFFLINE);
 			jogo1 = new Plataforma("Burrito", 100, j1);
+			
+			j2 = new HashSet<>();
+			j2.add(Jogabilidade.ONLINE);
+			j2.add(Jogabilidade.MULTIPLAYER);
+			j2.add(Jogabilidade.COMPETITIVO);
+			jogo2 = new Luta("Fight", 50.0, j2);
+
+			j3 = new HashSet<>();
+			j3.add(Jogabilidade.COOPERATIVO);
+			j3.add(Jogabilidade.MULTIPLAYER);
+			jogo3 = new RPG("Medieval", 70, j3);
 
 		} catch (DadoInvalidoException e) {
 			Assert.fail();
@@ -46,13 +64,13 @@ public class TestaUsuario {
 			Assert.assertEquals("m123", user1.getLogin());
 			Assert.assertEquals(0.0, user1.getQuantidadeDinheiro(), 0.1);
 			Assert.assertEquals(0, user1.getX2p());
-			Assert.assertEquals(0.0, user1.getTotalPreco(), 0.1);
+			Assert.assertEquals(0.0, user1.getTotalGasto(), 0.1);
 
 			Assert.assertEquals("Joao", user2.getNome());
 			Assert.assertEquals("j123", user2.getLogin());
 			Assert.assertEquals(0.0, user2.getQuantidadeDinheiro(), 0.1);
 			Assert.assertEquals(0, user2.getX2p());
-			Assert.assertEquals(0.0, user2.getTotalPreco(), 0.1);
+			Assert.assertEquals(0.0, user2.getTotalGasto(), 0.1);
 
 		} catch (Exception e) {
 			Assert.fail();
@@ -93,30 +111,61 @@ public class TestaUsuario {
 	public void testaAdicionaJogo() {
 		try {
 			user1.setQuantidadeDinheiro(250);
-			jogo1.joga(120, true);
 			user1.adicionaJogo(jogo1);
-			Assert.assertEquals(100, user1.getTotalPreco(), 0.1);
+			Assert.assertEquals(100, user1.getTotalGasto(), 0.1);
 			Assert.assertEquals(1, user1.getJogosComprados().size());
 			Assert.assertEquals(150, user1.getQuantidadeDinheiro(), 0.1);
-			Assert.assertEquals(1020, user1.getX2p());
+			Assert.assertEquals(1000, user1.getX2p());
 
 		} catch (Exception e) {
+			Assert.fail();
+		}
+	}
+	
+	@Test
+	public void testaJogar(){
+		try{
+			user1.setQuantidadeDinheiro(2500);
+			user2.setQuantidadeDinheiro(2500);
+			
+			user1.adicionaJogo(jogo1);
+			user1.jogar("Burrito", 300, true);
+			Assert.assertEquals(1030, user1.getX2p());
+			
+			user1.adicionaJogo(jogo2);
+			user1.jogar("Fight", 30000, false);
+			Assert.assertEquals(1540, user1.getX2p());
+			
+			user2.adicionaJogo(jogo3);
+			user2.jogar("Medieval", 800, false);
+			Assert.assertEquals(710, user2.getX2p());
+			
+		}catch (Exception e){
 			Assert.fail();
 		}
 	}
 
 	@Test
 	public void testaToString() {
-		try {
-			user1.setQuantidadeDinheiro(250);
-			jogo1.joga(120, true);
+		try {			
+			user1.setQuantidadeDinheiro(2500);
 			user1.adicionaJogo(jogo1);
+			user1.adicionaJogo(jogo2);
+			user1.adicionaJogo(jogo3);
+			
+			user1.jogar("Burrito", 500, true);
+			user1.jogar("Fight", 4000, false);
+			user1.jogar("Medieval", 300, false);
 
 			final String EOL = System.getProperty("line.separator");
+			String mensagemJogos = "";
+			for (Jogo j: user1.getJogosComprados()){
+				mensagemJogos = mensagemJogos + j.toString() + EOL;
+			}
 			String mensagem = "m123" + EOL + "Maria" + EOL
-					+ "Jogador Noob: 1020 x2p" + EOL + "Lista de Jogos:" + EOL
-					+ user1.getJogosComprados() + EOL
-					+ "Total de preco dos jogos: R$ 100.0" + EOL;
+					+ "Jogador Noob: 2184 x2p" + EOL + "Lista de Jogos:" + EOL
+					+ mensagemJogos
+					+ "Total de preco dos jogos: R$ 220.0" + EOL;
 			Assert.assertEquals(mensagem, user1.toString());
 
 		} catch (Exception e) {
