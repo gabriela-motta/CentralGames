@@ -2,10 +2,10 @@ package usuario;
 
 import java.util.ArrayList;
 
-import exceptions.DadoInvalidoException;
+import sistema.DadoInvalidoException;
 import jogo.Jogo;
 
-public abstract class Usuario {
+public class Usuario {
 	protected String nome;
 	protected String login;
 	protected ArrayList<Jogo> jogosComprados;
@@ -13,11 +13,12 @@ public abstract class Usuario {
 	protected double quantidadeDinheiro;
 	protected int x2p;
 
-	final String EOL = System.getProperty("line.separator");
-
 	public Usuario(String nome, String login) throws DadoInvalidoException {
-		if (nome.equals("")){
+		if (nome.equals("")) {
 			throw new DadoInvalidoException("Nome nao pode ser vazio");
+		}
+		if (login.equals("")) {
+			throw new DadoInvalidoException("Login nao pode ser vazio");
 		}
 		this.nome = nome;
 		this.login = login;
@@ -26,11 +27,25 @@ public abstract class Usuario {
 		this.quantidadeDinheiro = 0;
 		this.x2p = 0;
 	}
-	
-	public abstract double disconto(double preco);
+
+	public void adicionaJogo(Jogo jogo) {
+		if (this.quantidadeDinheiro >= jogo.getPreco()) {
+			this.jogosComprados.add(jogo);
+			this.quantidadeDinheiro = this.quantidadeDinheiro - jogo.getPreco();
+			this.totalPreco = this.totalPreco + jogo.getPreco();
+			this.x2p = (int) (this.x2p + (10 * jogo.getPreco()) + jogo
+					.getTotalPontos());
+		}
+	}
+
+	public double calculaPreco(double preco) {
+		return preco;
+	}
 
 	@Override
 	public String toString() {
+		final String EOL = System.getProperty("line.separator");
+
 		return this.login + EOL + this.nome + EOL + "Jogador "
 				+ this.getClass() + ": " + this.x2p + " x2p" + EOL
 				+ "Lista de Jogos:" + EOL + this.getJogosComprados() + EOL

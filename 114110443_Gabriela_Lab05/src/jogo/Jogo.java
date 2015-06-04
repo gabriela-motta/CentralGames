@@ -2,7 +2,7 @@ package jogo;
 
 import java.util.HashSet;
 
-import exceptions.DadoInvalidoException;
+import sistema.DadoInvalidoException;
 
 public abstract class Jogo {
 
@@ -11,13 +11,16 @@ public abstract class Jogo {
 	protected int highScore;
 	protected int quantidadeJogada;
 	protected int quantidadeZerada;
+	protected int totalPontos;
 	protected HashSet<Jogabilidade> jogabilidade;
 
-	final String EOL = System.getProperty("line.separator");
-
-	public Jogo(String nome, double preco, HashSet<Jogabilidade> jogabilidade) throws DadoInvalidoException {
-		if (nome.equals("")){
+	public Jogo(String nome, double preco, HashSet<Jogabilidade> jogabilidade)
+			throws DadoInvalidoException {
+		if (nome.equals("")) {
 			throw new DadoInvalidoException("Nome nao pode ser vazio");
+		}
+		if (preco < 0.0) {
+			throw new DadoInvalidoException("Preco nao pode ser negativo");
 		}
 		this.nome = nome;
 		this.preco = preco;
@@ -28,16 +31,11 @@ public abstract class Jogo {
 	}
 
 	@Override
-	public String toString() {
-		return "+ " + this.nome + " - " + this.getClass() + EOL + "==> Jogou "
-				+ this.quantidadeJogada + " vez(es)" + EOL + "==> Zerou "
-				+ this.quantidadeZerada + " vez(es)" + EOL
-				+ "==> Maior score: " + this.highScore + EOL;
-	}
+	public abstract String toString();
 
 	public void joga(int score, boolean zerou) {
 		this.quantidadeJogada = this.quantidadeJogada + 1;
-		if (zerou){
+		if (zerou) {
 			this.quantidadeZerada = this.quantidadeZerada + 1;
 		}
 		if (score > this.highScore) {
@@ -83,6 +81,22 @@ public abstract class Jogo {
 
 	public void setQuantidadeZerada(int quantidadeZerada) {
 		this.quantidadeZerada = quantidadeZerada;
+	}
+
+	public int getTotalPontos() {
+		return totalPontos;
+	}
+
+	public void setTotalPontos(int totalPontos) {
+		this.totalPontos = totalPontos;
+	}
+
+	public HashSet<Jogabilidade> getJogabilidade() {
+		return jogabilidade;
+	}
+
+	public void setJogabilidade(HashSet<Jogabilidade> jogabilidade) {
+		this.jogabilidade = jogabilidade;
 	}
 
 	@Override

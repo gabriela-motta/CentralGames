@@ -2,7 +2,7 @@ package jogo;
 
 import java.util.HashSet;
 
-import exceptions.DadoInvalidoException;
+import sistema.DadoInvalidoException;
 
 public class JogoFactory {
 

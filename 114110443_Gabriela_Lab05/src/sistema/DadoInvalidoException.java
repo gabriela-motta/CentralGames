@@ -1,4 +1,4 @@
-package exceptions;
+package sistema;
 
 public class DadoInvalidoException extends Exception {
 
@@ -7,6 +7,6 @@ public class DadoInvalidoException extends Exception {
 
 	public DadoInvalidoException(String mensagem) {
 		super(mensagem);
-		
+
 	}
 }
