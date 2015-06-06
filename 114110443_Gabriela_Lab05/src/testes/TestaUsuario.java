@@ -1,5 +1,7 @@
 package testes;
 
+//114110443 - Gabriela Motta Oliveira: LAB 05 - Turma 3
+
 import java.util.HashSet;
 
 import jogo.Jogabilidade;
@@ -40,7 +42,7 @@ public class TestaUsuario {
 			j1.add(Jogabilidade.COMPETITIVO);
 			j1.add(Jogabilidade.OFFLINE);
 			jogo1 = new Plataforma("Burrito", 100, j1);
-			
+
 			j2 = new HashSet<>();
 			j2.add(Jogabilidade.ONLINE);
 			j2.add(Jogabilidade.MULTIPLAYER);
@@ -121,51 +123,51 @@ public class TestaUsuario {
 			Assert.fail();
 		}
 	}
-	
+
 	@Test
-	public void testaJogar(){
-		try{
+	public void testaJogar() {
+		try {
 			user1.setQuantidadeDinheiro(2500);
 			user2.setQuantidadeDinheiro(2500);
-			
+
 			user1.adicionaJogo(jogo1);
 			user1.jogar("Burrito", 300, true);
 			Assert.assertEquals(1030, user1.getX2p());
-			
+
 			user1.adicionaJogo(jogo2);
 			user1.jogar("Fight", 30000, false);
 			Assert.assertEquals(1540, user1.getX2p());
-			
+
 			user2.adicionaJogo(jogo3);
 			user2.jogar("Medieval", 800, false);
 			Assert.assertEquals(710, user2.getX2p());
-			
-		}catch (Exception e){
+
+		} catch (Exception e) {
 			Assert.fail();
 		}
 	}
 
 	@Test
 	public void testaToString() {
-		try {			
+		try {
 			user1.setQuantidadeDinheiro(2500);
 			user1.adicionaJogo(jogo1);
 			user1.adicionaJogo(jogo2);
 			user1.adicionaJogo(jogo3);
-			
+
 			user1.jogar("Burrito", 500, true);
 			user1.jogar("Fight", 4000, false);
 			user1.jogar("Medieval", 300, false);
 
 			final String EOL = System.getProperty("line.separator");
 			String mensagemJogos = "";
-			for (Jogo j: user1.getJogosComprados()){
+			for (Jogo j : user1.getJogosComprados()) {
 				mensagemJogos = mensagemJogos + j.toString() + EOL;
 			}
 			String mensagem = "m123" + EOL + "Maria" + EOL
 					+ "Jogador Noob: 2184 x2p" + EOL + "Lista de Jogos:" + EOL
-					+ mensagemJogos
-					+ "Total de preco dos jogos: R$ 220.0" + EOL;
+					+ mensagemJogos + "Total de preco dos jogos: R$ 220.0"
+					+ EOL;
 			Assert.assertEquals(mensagem, user1.toString());
 
 		} catch (Exception e) {

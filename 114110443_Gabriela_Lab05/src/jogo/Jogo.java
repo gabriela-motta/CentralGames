@@ -1,5 +1,7 @@
 package jogo;
 
+//114110443 - Gabriela Motta Oliveira: LAB 05 - Turma 3
+
 import java.util.HashSet;
 
 import sistema.DadoInvalidoException;
@@ -8,13 +10,25 @@ import sistema.ValorInvalidoException;
 
 public abstract class Jogo {
 
-	protected String nome;
-	protected double preco;
-	protected int highScore;
-	protected int quantidadeJogada;
-	protected int quantidadeZerada;
-	protected HashSet<Jogabilidade> jogabilidade;
+	private String nome;
+	private double preco;
+	private int highScore;
+	private int quantidadeJogada;
+	private int quantidadeZerada;
+	private HashSet<Jogabilidade> jogabilidade;
 
+	/**
+	 * Construtor de Jogo
+	 * 
+	 * @param nome
+	 *            O nome do jogo
+	 * @param preco
+	 *            O preco do jogo
+	 * @param jogabilidade
+	 *            Conjunto de jogabilidades do jogo
+	 * @throws DadoInvalidoException
+	 *             Se o nome for vazio ou o se o preco for negativo
+	 */
 	public Jogo(String nome, double preco, HashSet<Jogabilidade> jogabilidade)
 			throws DadoInvalidoException {
 		if (nome.equals("")) {
@@ -31,11 +45,25 @@ public abstract class Jogo {
 		this.jogabilidade = jogabilidade;
 	}
 
+	/**
+	 * Retorna uma String com informacoes do jogo
+	 */
 	@Override
 	public abstract String toString();
 
+	/**
+	 * Joga o jogo, alterando a quantidade jogada, a quantidade zerada e o high
+	 * score se necessario
+	 * 
+	 * @param score
+	 *            A pontuacao atingida
+	 * @param zerou
+	 *            Indica se o usuario zerou o jogo
+	 * @return Pontos extras que o usuario ganhou ao jogar
+	 */
 	public abstract int joga(int score, boolean zerou);
 
+	// GETTERS E SETTERS
 	public String getNome() {
 		return nome;
 	}

@@ -1,5 +1,7 @@
 package jogo;
 
+//114110443 - Gabriela Motta Oliveira: LAB 05 - Turma 3
+
 import java.util.HashSet;
 
 import sistema.DadoInvalidoException;
@@ -13,23 +15,23 @@ public class RPG extends Jogo {
 
 	public int joga(int score, boolean zerou) {
 		int pontosExtras = 0;
-		quantidadeJogada = quantidadeJogada + 1;
+		setQuantidadeJogada(getQuantidadeJogada() + 1);
 		if (zerou) {
-			quantidadeZerada = quantidadeZerada + 1;
+			setQuantidadeZerada(getQuantidadeZerada() + 1);
 		}
-		if (score > highScore) {
-			highScore = score;
+		if (score > getHighScore()) {
+			setHighScore(score);
 		}
-		pontosExtras = 10 * quantidadeJogada;
+		pontosExtras = 10 * getQuantidadeJogada();
 		return pontosExtras;
 	}
 
 	public String toString() {
 		final String EOL = System.getProperty("line.separator");
 
-		return "+ " + this.nome + " - RPG" + EOL + "==> Jogou "
-				+ this.quantidadeJogada + " vez(es)" + EOL + "==> Zerou "
-				+ this.quantidadeZerada + " vez(es)" + EOL
-				+ "==> Maior score: " + this.highScore + EOL;
+		return "+ " + getNome() + " - RPG" + EOL + "==> Jogou "
+				+ getQuantidadeJogada() + " vez(es)" + EOL + "==> Zerou "
+				+ getQuantidadeZerada() + " vez(es)" + EOL
+				+ "==> Maior score: " + getHighScore() + EOL;
 	}
 }

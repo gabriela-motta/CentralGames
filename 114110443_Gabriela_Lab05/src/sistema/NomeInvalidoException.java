@@ -1,9 +1,8 @@
 package sistema;
 
-public class NomeInvalidoException extends DadoInvalidoException {
+//114110443 - Gabriela Motta Oliveira: LAB 05 - Turma 3
 
-	public NomeInvalidoException() {
-	}
+public class NomeInvalidoException extends DadoInvalidoException {
 
 	public NomeInvalidoException(String mensagem) {
 		super(mensagem);

@@ -1,5 +1,7 @@
 package testes;
 
+//114110443 - Gabriela Motta Oliveira: LAB 05 - Turma 3
+
 import java.util.HashSet;
 
 import jogo.Jogabilidade;
@@ -101,9 +103,9 @@ public class TestaJogo {
 			Assert.assertEquals(3, jogo1.getQuantidadeJogada());
 			Assert.assertEquals(601, jogo1.getHighScore());
 			Assert.assertEquals(2, jogo1.getQuantidadeZerada());
-			
+
 			Assert.assertEquals(3, jogo2.joga(3000, false));
-			
+
 			Assert.assertEquals(10, jogo3.joga(400, false));
 
 		} catch (Exception e) {

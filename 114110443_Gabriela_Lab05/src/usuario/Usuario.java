@@ -1,18 +1,21 @@
 package usuario;
 
+//114110443 - Gabriela Motta Oliveira: LAB 05 - Turma 3
+
 import java.util.ArrayList;
 
+import jogo.Jogo;
 import sistema.DadoInvalidoException;
 import sistema.NomeInvalidoException;
-import jogo.Jogo;
 
-public class Usuario {
-	protected String nome;
-	protected String login;
-	protected ArrayList<Jogo> jogosComprados;
-	protected double totalGasto;
-	protected double quantidadeDinheiro;
-	protected int x2p;
+public abstract class Usuario {
+
+	private String nome;
+	private String login;
+	private ArrayList<Jogo> jogosComprados;
+	private double totalGasto;
+	private double quantidadeDinheiro;
+	private int x2p;
 
 	/**
 	 * Construtor de Usuario
@@ -22,7 +25,7 @@ public class Usuario {
 	 * @param login
 	 *            O login do usuario
 	 * @throws DadoInvalidoException
-	 *             Se o nome ou login forem vazios
+	 *             Se o nome ou o login forem vazios
 	 */
 	public Usuario(String nome, String login) throws DadoInvalidoException {
 		if (nome.equals("")) {
@@ -73,36 +76,40 @@ public class Usuario {
 		}
 	}
 
-	public int recompensar(String nomeJogo) {
-		return 0;
-	}
+	/**
+	 * Recompensa o usuario adicionando x2p de acordo com a jogabilidade do jogo
+	 * 
+	 * @param nomeJogo
+	 *            O nome do jogo
+	 * @return A quantidade de x2p que o usuario ganhou
+	 */
+	public abstract int recompensar(String nomeJogo);
 
-	public int punir(String nomeJogo) {
-		return 0;
-	}
+	/**
+	 * Pune o usuario removendo x2p de acordo com a jogabilidade do jogo
+	 * 
+	 * @param nomeJogo
+	 *            O nome do jogo
+	 * @return A quantidade de x2p que o usuario perdeu
+	 */
+	public abstract int punir(String nomeJogo);
 
-	public double calculaPreco(double preco) {
-		return preco;
-	}
+	/**
+	 * Calcula quanto o usuario vai pagar em um jogo usando descontos
+	 * 
+	 * @param preco
+	 *            O preco do jogo
+	 * @return O valor a pagar com desconto
+	 */
+	public abstract double calculaPreco(double preco);
 
 	/**
 	 * Retorna uma String com informacoes do usuario
 	 */
 	@Override
-	public String toString() {
-		final String EOL = System.getProperty("line.separator");
+	public abstract String toString();
 
-		String mensagemJogos = "";
-		for (Jogo j : jogosComprados) {
-			mensagemJogos = mensagemJogos + j.toString() + EOL;
-		}
-
-		return this.login + EOL + this.nome + EOL + "Jogador "
-				+ this.getClass() + ": " + this.x2p + " x2p" + EOL
-				+ "Lista de Jogos:" + EOL + mensagemJogos
-				+ "Total de preco dos jogos: R$ " + this.totalGasto + EOL;
-	}
-
+	// GETTERS E SETTERS
 	public String getNome() {
 		return nome;
 	}
