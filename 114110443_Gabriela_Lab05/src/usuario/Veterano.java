@@ -19,10 +19,11 @@ public class Veterano extends Usuario {
 		return aPagar;
 	}
 
-	public int recompensar(String nomeJogo) {
-		int pontos = 0;
+	public void recompensar(String nomeJogo, int score, boolean zerou) {
+		int pontos = getX2p();
 		for (Jogo jogo : getJogosComprados()) {
 			if (jogo.getNome().equals(nomeJogo)) {
+				pontos = pontos + jogo.joga(score, zerou);
 				if (jogo.getJogabilidade().contains(Jogabilidade.ONLINE)) {
 					pontos = pontos + 10;
 				}
@@ -31,13 +32,14 @@ public class Veterano extends Usuario {
 				}
 			}
 		}
-		return pontos;
+		setX2p(pontos);
 	}
 
-	public int punir(String nomeJogo) {
-		int pontos = 0;
+	public void punir(String nomeJogo, int score, boolean zerou) {
+		int pontos = getX2p();
 		for (Jogo jogo : getJogosComprados()) {
 			if (jogo.getNome().equals(nomeJogo)) {
+				pontos = pontos + jogo.joga(score, zerou);
 				if (jogo.getJogabilidade().contains(Jogabilidade.COMPETITIVO)) {
 					pontos = pontos - 10;
 				}
@@ -46,7 +48,7 @@ public class Veterano extends Usuario {
 				}
 			}
 		}
-		return pontos;
+		setX2p(pontos);
 	}
 
 	public String toString() {

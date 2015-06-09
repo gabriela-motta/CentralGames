@@ -59,41 +59,20 @@ public abstract class Usuario {
 	}
 
 	/**
-	 * Joga um jogo comprado, alterando a quantidade de x2p do usuario
-	 * 
-	 * @param nomeJogo
-	 *            O nome do jogo a ser jogado
-	 * @param score
-	 *            A pontuacao atingida
-	 * @param zerou
-	 *            Indica se o usuario zerou o jogo
-	 */
-	public void jogar(String nomeJogo, int score, boolean zerou) {
-		for (Jogo jogo : jogosComprados) {
-			if (jogo.getNome().equals(nomeJogo)) {
-				this.x2p = this.x2p + jogo.joga(score, zerou) + punir(nomeJogo)
-						+ recompensar(nomeJogo);
-			}
-		}
-	}
-
-	/**
 	 * Recompensa o usuario adicionando x2p de acordo com a jogabilidade do jogo
 	 * 
 	 * @param nomeJogo
 	 *            O nome do jogo
-	 * @return A quantidade de x2p que o usuario ganhou
 	 */
-	public abstract int recompensar(String nomeJogo);
+	public abstract void recompensar(String nomeJogo, int score, boolean zerou);
 
 	/**
 	 * Pune o usuario removendo x2p de acordo com a jogabilidade do jogo
 	 * 
 	 * @param nomeJogo
 	 *            O nome do jogo
-	 * @return A quantidade de x2p que o usuario perdeu
 	 */
-	public abstract int punir(String nomeJogo);
+	public abstract void punir(String nomeJogo, int score, boolean zerou);
 
 	/**
 	 * Calcula quanto o usuario vai pagar em um jogo usando descontos

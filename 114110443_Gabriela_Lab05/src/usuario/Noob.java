@@ -14,10 +14,11 @@ public class Noob extends Usuario {
 		super(nome, login);
 	}
 
-	public int recompensar(String nomeJogo) {
-		int pontos = 0;
+	public void recompensar(String nomeJogo, int score, boolean zerou) {
+		int pontos = getX2p();
 		for (Jogo jogo : getJogosComprados()) {
 			if (jogo.getNome().equals(nomeJogo)) {
+				pontos = pontos + jogo.joga(score, zerou);
 				if (jogo.getJogabilidade().contains(Jogabilidade.OFFLINE)) {
 					pontos = pontos + 30;
 				}
@@ -26,13 +27,14 @@ public class Noob extends Usuario {
 				}
 			}
 		}
-		return pontos;
+		setX2p(pontos);
 	}
 
-	public int punir(String nomeJogo) {
-		int pontos = 0;
+	public void punir(String nomeJogo, int score, boolean zerou) {
+		int pontos = getX2p();
 		for (Jogo jogo : getJogosComprados()) {
 			if (jogo.getNome().equals(nomeJogo)) {
+				pontos = pontos + jogo.joga(score, zerou);
 				if (jogo.getJogabilidade().contains(Jogabilidade.ONLINE)) {
 					pontos = pontos - 10;
 				}
@@ -44,7 +46,7 @@ public class Noob extends Usuario {
 				}
 			}
 		}
-		return pontos;
+		setX2p(pontos);
 	}
 
 	public double calculaPreco(double preco) {

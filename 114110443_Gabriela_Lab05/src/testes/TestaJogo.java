@@ -74,7 +74,7 @@ public class TestaJogo {
 			Assert.fail("Esperava excecao de dado invalido");
 
 		} catch (EntradaException e) {
-			Assert.assertEquals("Nome nao pode ser vazio", e.getMessage());
+			Assert.assertEquals("String especificada e invalida", e.getMessage());
 		}
 
 		try {
@@ -82,7 +82,7 @@ public class TestaJogo {
 			Assert.fail("Esperava excecao de dado invalido");
 
 		} catch (EntradaException e) {
-			Assert.assertEquals("Preco nao pode ser negativo", e.getMessage());
+			Assert.assertEquals("Dado especificado e invalido", e.getMessage());
 		}
 	}
 

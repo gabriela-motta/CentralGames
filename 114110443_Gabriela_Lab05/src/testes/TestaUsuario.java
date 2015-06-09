@@ -86,7 +86,7 @@ public class TestaUsuario {
 			Assert.fail("Esperava excecao de dado invalido");
 
 		} catch (EntradaException e) {
-			Assert.assertEquals("Nome nao pode ser vazio", e.getMessage());
+			Assert.assertEquals("String especificada e invalida", e.getMessage());
 		}
 
 		try {
@@ -94,7 +94,7 @@ public class TestaUsuario {
 			Assert.fail("Esperava excecao de dado invalido");
 
 		} catch (EntradaException e) {
-			Assert.assertEquals("Login nao pode ser vazio", e.getMessage());
+			Assert.assertEquals("String especificada e invalida", e.getMessage());
 		}
 	}
 
@@ -125,39 +125,14 @@ public class TestaUsuario {
 	}
 
 	@Test
-	public void testaJogar() {
-		try {
-			user1.setQuantidadeDinheiro(2500);
-			user2.setQuantidadeDinheiro(2500);
-
-			user1.adicionaJogo(jogo1);
-			user1.jogar("Burrito", 300, true);
-			Assert.assertEquals(1030, user1.getX2p());
-
-			user1.adicionaJogo(jogo2);
-			user1.jogar("Fight", 30000, false);
-			Assert.assertEquals(1540, user1.getX2p());
-
-			user2.adicionaJogo(jogo3);
-			user2.jogar("Medieval", 800, false);
-			Assert.assertEquals(710, user2.getX2p());
-
-		} catch (Exception e) {
-			Assert.fail();
-		}
-	}
-
-	@Test
 	public void testaToString() {
 		try {
 			user1.setQuantidadeDinheiro(2500);
 			user1.adicionaJogo(jogo1);
 			user1.adicionaJogo(jogo2);
-			user1.adicionaJogo(jogo3);
 
-			user1.jogar("Burrito", 500, true);
-			user1.jogar("Fight", 4000, false);
-			user1.jogar("Medieval", 300, false);
+			user1.punir("Burrito", 500, true);
+			user1.recompensar("Fight", 4000, false);
 
 			final String EOL = System.getProperty("line.separator");
 			String mensagemJogos = "";
@@ -165,8 +140,8 @@ public class TestaUsuario {
 				mensagemJogos = mensagemJogos + j.toString() + EOL;
 			}
 			String mensagem = "m123" + EOL + "Maria" + EOL
-					+ "Jogador Noob: 2184 x2p" + EOL + "Lista de Jogos:" + EOL
-					+ mensagemJogos + "Total de preco dos jogos: R$ 220.0"
+					+ "Jogador Noob: 1514 x2p" + EOL + "Lista de Jogos:" + EOL
+					+ mensagemJogos + "Total de preco dos jogos: R$ 150.0"
 					+ EOL;
 			Assert.assertEquals(mensagem, user1.toString());
 

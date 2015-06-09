@@ -48,7 +48,7 @@ public class Loja {
 				this.usuarios.add(novo);
 			}
 
-		} catch (DadoInvalidoException e) {
+		} catch (EntradaException e) {
 			System.out.println(e.getMessage());
 		}
 	}
@@ -167,7 +167,7 @@ public class Loja {
 				this.usuarios.add(novoUsuario);
 			}
 
-		} catch (DadoInvalidoException e) {
+		} catch (EntradaException e) {
 			System.out.println(e.getMessage());
 		}
 	}
@@ -181,7 +181,7 @@ public class Loja {
 	 *             Se o usuario ja for Veterano ou seus pontos forem
 	 *             incompativeis com a conversao
 	 */
-	public void upgrade(String loginUsuario) throws ConversaoInvalidaException {
+	public void upgrade(String loginUsuario) throws LogicaException {
 		for (Usuario user : usuarios) {
 			if (user.getLogin().equals(loginUsuario)) {
 				if (user instanceof Veterano) {
@@ -189,8 +189,7 @@ public class Loja {
 							"Usuario ja e Veterano");
 
 				} else if (user.getX2p() < 1000) {
-					throw new PontosIncompativeisException(
-							"Pontos incompativeis para upgrade");
+					throw new PontosIncompativeisException("Pontos incompativeis para upgrade");
 
 				} else {
 					converte(user, "Veterano");
@@ -209,7 +208,7 @@ public class Loja {
 	 *             com a conversao
 	 */
 	public void downgrade(String loginUsuario)
-			throws ConversaoInvalidaException {
+			throws LogicaException {
 		for (Usuario user : usuarios) {
 			if (user.getLogin().equals(loginUsuario)) {
 				if (user instanceof Noob) {

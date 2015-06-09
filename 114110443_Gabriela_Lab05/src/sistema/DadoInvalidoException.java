@@ -4,7 +4,7 @@ package sistema;
 
 public class DadoInvalidoException extends EntradaException {
 	
-	public public DadoInvalidoException() {
+	public DadoInvalidoException() {
 		super("Dado especificado e invalido");
 	}
 
