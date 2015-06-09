@@ -4,12 +4,12 @@ package jogo;
 
 import java.util.HashSet;
 
-import sistema.DadoInvalidoException;
+import sistema.EntradaException;
 
 public class RPG extends Jogo {
 
 	public RPG(String nome, double preco, HashSet<Jogabilidade> jogabilidade)
-			throws DadoInvalidoException {
+			throws EntradaException {
 		super(nome, preco, jogabilidade);
 	}
 

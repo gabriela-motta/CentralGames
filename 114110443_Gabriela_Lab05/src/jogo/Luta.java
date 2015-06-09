@@ -4,12 +4,12 @@ package jogo;
 
 import java.util.HashSet;
 
-import sistema.DadoInvalidoException;
+import sistema.EntradaException;
 
 public class Luta extends Jogo {
 
 	public Luta(String nome, double preco, HashSet<Jogabilidade> jogabilidade)
-			throws DadoInvalidoException {
+			throws EntradaException {
 		super(nome, preco, jogabilidade);
 	}
 

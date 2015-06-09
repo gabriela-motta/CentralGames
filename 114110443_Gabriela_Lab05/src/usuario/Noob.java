@@ -4,13 +4,13 @@ package usuario;
 
 import jogo.Jogabilidade;
 import jogo.Jogo;
-import sistema.DadoInvalidoException;
+import sistema.EntradaException;
 
 public class Noob extends Usuario {
 
 	private static final double DESCONTO = 0.1;
 
-	public Noob(String nome, String login) throws DadoInvalidoException {
+	public Noob(String nome, String login) throws EntradaException {
 		super(nome, login);
 	}
 

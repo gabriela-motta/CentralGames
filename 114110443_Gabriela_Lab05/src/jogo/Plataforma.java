@@ -4,12 +4,12 @@ package jogo;
 
 import java.util.HashSet;
 
-import sistema.DadoInvalidoException;
+import sistema.EntradaException;
 
 public class Plataforma extends Jogo {
 
 	public Plataforma(String nome, double preco,
-			HashSet<Jogabilidade> jogabilidade) throws DadoInvalidoException {
+			HashSet<Jogabilidade> jogabilidade) throws EntradaException {
 		super(nome, preco, jogabilidade);
 	}
 

@@ -5,6 +5,7 @@ package jogo;
 import java.util.HashSet;
 
 import sistema.DadoInvalidoException;
+import sistema.EntradaException;
 
 public class JogoFactory {
 
@@ -24,7 +25,7 @@ public class JogoFactory {
 		try {
 			return new RPG(nome, preco, jogabilidade);
 
-		} catch (DadoInvalidoException e) {
+		} catch (EntradaException e) {
 			System.out.println(e.getMessage());
 		}
 		return null;
@@ -46,7 +47,7 @@ public class JogoFactory {
 		try {
 			return new Luta(nome, preco, jogabilidade);
 
-		} catch (DadoInvalidoException e) {
+		} catch (EntradaException e) {
 			System.out.println(e.getMessage());
 		}
 		return null;
@@ -68,7 +69,7 @@ public class JogoFactory {
 		try {
 			return new Plataforma(nome, preco, jogabilidade);
 
-		} catch (DadoInvalidoException e) {
+		} catch (EntradaException e) {
 			System.out.println(e.getMessage());
 		}
 		return null;

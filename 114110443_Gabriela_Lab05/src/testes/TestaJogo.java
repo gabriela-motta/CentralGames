@@ -14,7 +14,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import sistema.DadoInvalidoException;
+import sistema.EntradaException;
 
 public class TestaJogo {
 
@@ -42,7 +42,7 @@ public class TestaJogo {
 			j3.add(Jogabilidade.COOPERATIVO);
 			jogo3 = new RPG("Medieval", 70, j3);
 
-		} catch (DadoInvalidoException e) {
+		} catch (EntradaException e) {
 			Assert.fail();
 		}
 	}
@@ -73,7 +73,7 @@ public class TestaJogo {
 			jogo4 = new Plataforma("", 10, j2);
 			Assert.fail("Esperava excecao de dado invalido");
 
-		} catch (DadoInvalidoException e) {
+		} catch (EntradaException e) {
 			Assert.assertEquals("Nome nao pode ser vazio", e.getMessage());
 		}
 
@@ -81,7 +81,7 @@ public class TestaJogo {
 			jogo5 = new RPG("Castle", -1, j3);
 			Assert.fail("Esperava excecao de dado invalido");
 
-		} catch (DadoInvalidoException e) {
+		} catch (EntradaException e) {
 			Assert.assertEquals("Preco nao pode ser negativo", e.getMessage());
 		}
 	}

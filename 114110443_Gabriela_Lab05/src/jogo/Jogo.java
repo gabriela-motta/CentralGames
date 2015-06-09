@@ -5,8 +5,8 @@ package jogo;
 import java.util.HashSet;
 
 import sistema.DadoInvalidoException;
-import sistema.NomeInvalidoException;
-import sistema.ValorInvalidoException;
+import sistema.EntradaException;
+import sistema.StringInvalidaException;
 
 public abstract class Jogo {
 
@@ -30,12 +30,12 @@ public abstract class Jogo {
 	 *             Se o nome for vazio ou o se o preco for negativo
 	 */
 	public Jogo(String nome, double preco, HashSet<Jogabilidade> jogabilidade)
-			throws DadoInvalidoException {
+			throws EntradaException {
 		if (nome.equals("")) {
-			throw new NomeInvalidoException("Nome nao pode ser vazio");
+			throw new StringInvalidaException();
 		}
 		if (preco < 0.0) {
-			throw new ValorInvalidoException("Preco nao pode ser negativo");
+			throw new DadoInvalidoException();
 		}
 		this.nome = nome;
 		this.preco = preco;

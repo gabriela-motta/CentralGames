@@ -6,7 +6,8 @@ import java.util.ArrayList;
 
 import jogo.Jogo;
 import sistema.DadoInvalidoException;
-import sistema.NomeInvalidoException;
+import sistema.EntradaException;
+import sistema.StringInvalidaException;
 
 public abstract class Usuario {
 
@@ -27,12 +28,12 @@ public abstract class Usuario {
 	 * @throws DadoInvalidoException
 	 *             Se o nome ou o login forem vazios
 	 */
-	public Usuario(String nome, String login) throws DadoInvalidoException {
+	public Usuario(String nome, String login) throws EntradaException {
 		if (nome.equals("")) {
-			throw new NomeInvalidoException("Nome nao pode ser vazio");
+			throw new StringInvalidaException();
 		}
 		if (login.equals("")) {
-			throw new NomeInvalidoException("Login nao pode ser vazio");
+			throw new StringInvalidaException();
 		}
 		this.nome = nome;
 		this.login = login;
