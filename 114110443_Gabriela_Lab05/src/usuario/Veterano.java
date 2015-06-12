@@ -2,9 +2,9 @@ package usuario;
 
 //114110443 - Gabriela Motta Oliveira: LAB 05 - Turma 3
 
-import exceptions.EntradaException;
 import jogo.Jogabilidade;
 import jogo.Jogo;
+import sistema.EntradaException;
 
 public class Veterano extends Usuario {
 

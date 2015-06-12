@@ -4,7 +4,7 @@ package jogo;
 
 import java.util.HashSet;
 
-import sistema.EntradaException;
+import exceptions.EntradaException;
 
 public class RPG extends Jogo {
 

@@ -5,10 +5,6 @@ package sistema;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-import exceptions.ConversaoInvalidaException;
-import exceptions.EntradaException;
-import exceptions.LogicaException;
-import exceptions.PontosIncompativeisException;
 import jogo.Jogabilidade;
 import jogo.Jogo;
 import jogo.JogoFactory;

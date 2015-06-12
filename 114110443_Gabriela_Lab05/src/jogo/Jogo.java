@@ -4,9 +4,9 @@ package jogo;
 
 import java.util.HashSet;
 
-import exceptions.DadoInvalidoException;
-import exceptions.EntradaException;
-import exceptions.StringInvalidaException;
+import sistema.DadoInvalidoException;
+import sistema.EntradaException;
+import sistema.StringInvalidaException;
 
 public abstract class Jogo {
 

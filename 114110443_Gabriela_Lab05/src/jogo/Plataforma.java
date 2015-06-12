@@ -4,7 +4,7 @@ package jogo;
 
 import java.util.HashSet;
 
-import exceptions.EntradaException;
+import sistema.EntradaException;
 
 public class Plataforma extends Jogo {
 

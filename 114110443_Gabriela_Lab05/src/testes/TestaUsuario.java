@@ -14,7 +14,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import exceptions.EntradaException;
+import sistema.EntradaException;
 import usuario.Noob;
 import usuario.Usuario;
 import usuario.Veterano;

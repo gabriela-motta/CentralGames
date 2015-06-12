@@ -4,12 +4,12 @@ package jogo;
 
 import java.util.HashSet;
 
-import exceptions.EntradaException;
+import sistema.EntradaException;
 
-public class Plataforma extends Jogo {
+public class Luta extends Jogo {
 
-	public Plataforma(String nome, double preco,
-			HashSet<Jogabilidade> jogabilidade) throws EntradaException {
+	public Luta(String nome, double preco, HashSet<Jogabilidade> jogabilidade)
+			throws EntradaException {
 		super(nome, preco, jogabilidade);
 	}
 
@@ -21,15 +21,15 @@ public class Plataforma extends Jogo {
 		}
 		if (score > getHighScore()) {
 			setHighScore(score);
+			pontosExtras = getHighScore() / 1000;
 		}
-		pontosExtras = 20 * getQuantidadeZerada();
 		return pontosExtras;
 	}
 
 	public String toString() {
 		final String EOL = System.getProperty("line.separator");
 
-		return "+ " + getNome() + " - Plataforma" + EOL + "==> Jogou "
+		return "+ " + getNome() + " - Luta" + EOL + "==> Jogou "
 				+ getQuantidadeJogada() + " vez(es)" + EOL + "==> Zerou "
 				+ getQuantidadeZerada() + " vez(es)" + EOL
 				+ "==> Maior score: " + getHighScore() + EOL;

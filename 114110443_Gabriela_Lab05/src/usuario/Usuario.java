@@ -4,10 +4,10 @@ package usuario;
 
 import java.util.ArrayList;
 
-import exceptions.DadoInvalidoException;
-import exceptions.EntradaException;
-import exceptions.StringInvalidaException;
 import jogo.Jogo;
+import sistema.DadoInvalidoException;
+import sistema.EntradaException;
+import sistema.StringInvalidaException;
 
 public abstract class Usuario {
 

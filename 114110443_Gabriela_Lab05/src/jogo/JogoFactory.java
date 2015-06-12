@@ -4,8 +4,8 @@ package jogo;
 
 import java.util.HashSet;
 
-import exceptions.DadoInvalidoException;
-import exceptions.EntradaException;
+import sistema.DadoInvalidoException;
+import sistema.EntradaException;
 
 public class JogoFactory {
 
