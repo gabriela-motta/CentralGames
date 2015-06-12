@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.8" icons="false" automaticImage="JPEG" always-add-relationships="false" 
   generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
-  <class id="1" language="java" name="jogo.Jogo" project="114110443_Gabriela_Lab05" 
-    file="/114110443_Gabriela_Lab05/src/jogo/Jogo.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="1" language="java" name="jogo.Jogo" project="114110443_Gabriela_Lab06" 
+    file="/114110443_Gabriela_Lab06/src/jogo/Jogo.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="449" y="171"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -10,8 +10,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="sistema.Loja" project="114110443_Gabriela_Lab05" 
-    file="/114110443_Gabriela_Lab05/src/sistema/Loja.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="2" language="java" name="sistema.Loja" project="114110443_Gabriela_Lab06" 
+    file="/114110443_Gabriela_Lab06/src/sistema/Loja.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="847" y="556"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -19,8 +19,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="jogo.RPG" project="114110443_Gabriela_Lab05" 
-    file="/114110443_Gabriela_Lab05/src/jogo/RPG.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="3" language="java" name="jogo.RPG" project="114110443_Gabriela_Lab06" 
+    file="/114110443_Gabriela_Lab06/src/jogo/RPG.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="96" width="223" x="40" y="-7"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -28,8 +28,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="jogo.Luta" project="114110443_Gabriela_Lab05" 
-    file="/114110443_Gabriela_Lab05/src/jogo/Luta.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="4" language="java" name="jogo.Luta" project="114110443_Gabriela_Lab06" 
+    file="/114110443_Gabriela_Lab06/src/jogo/Luta.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="146" y="173"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -37,8 +37,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="jogo.Plataforma" project="114110443_Gabriela_Lab05" 
-    file="/114110443_Gabriela_Lab05/src/jogo/Plataforma.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="5" language="java" name="jogo.Plataforma" project="114110443_Gabriela_Lab06" 
+    file="/114110443_Gabriela_Lab06/src/jogo/Plataforma.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="149" y="313"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -46,8 +46,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <enumeration id="6" language="java" name="jogo.Jogabilidade" project="114110443_Gabriela_Lab05" 
-    file="/114110443_Gabriela_Lab05/src/jogo/Jogabilidade.java" binary="false" corner="BOTTOM_RIGHT">    
+  <enumeration id="6" language="java" name="jogo.Jogabilidade" project="114110443_Gabriela_Lab06" 
+    file="/114110443_Gabriela_Lab06/src/jogo/Jogabilidade.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="770" y="101"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -55,8 +55,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </enumeration>  
-  <class id="7" language="java" name="jogo.JogoFactory" project="114110443_Gabriela_Lab05" 
-    file="/114110443_Gabriela_Lab05/src/jogo/JogoFactory.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="7" language="java" name="jogo.JogoFactory" project="114110443_Gabriela_Lab06" 
+    file="/114110443_Gabriela_Lab06/src/jogo/JogoFactory.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="128" width="300" x="693" y="206"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -64,8 +64,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="sistema.EntradaException" project="114110443_Gabriela_Lab05" 
-    file="/114110443_Gabriela_Lab05/src/sistema/EntradaException.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="8" language="java" name="sistema.EntradaException" project="114110443_Gabriela_Lab06" 
+    file="/114110443_Gabriela_Lab06/src/sistema/EntradaException.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="767" y="789"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -73,8 +73,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="sistema.PontosIncompativeisException" project="114110443_Gabriela_Lab05" 
-    file="/114110443_Gabriela_Lab05/src/sistema/PontosIncompativeisException.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="9" language="java" name="sistema.PontosIncompativeisException" project="114110443_Gabriela_Lab06" 
+    file="/114110443_Gabriela_Lab06/src/sistema/PontosIncompativeisException.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1074" y="916"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -82,8 +82,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="sistema.StringInvalidaException" project="114110443_Gabriela_Lab05" 
-    file="/114110443_Gabriela_Lab05/src/sistema/StringInvalidaException.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="10" language="java" name="sistema.StringInvalidaException" project="114110443_Gabriela_Lab06" 
+    file="/114110443_Gabriela_Lab06/src/sistema/StringInvalidaException.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="664" y="925"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -91,8 +91,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="sistema.DadoInvalidoException" project="114110443_Gabriela_Lab05" 
-    file="/114110443_Gabriela_Lab05/src/sistema/DadoInvalidoException.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="11" language="java" name="sistema.DadoInvalidoException" project="114110443_Gabriela_Lab06" 
+    file="/114110443_Gabriela_Lab06/src/sistema/DadoInvalidoException.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="864" y="922"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -100,8 +100,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="sistema.LogicaException" project="114110443_Gabriela_Lab05" 
-    file="/114110443_Gabriela_Lab05/src/sistema/LogicaException.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="12" language="java" name="sistema.LogicaException" project="114110443_Gabriela_Lab06" 
+    file="/114110443_Gabriela_Lab06/src/sistema/LogicaException.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1161" y="789"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -109,8 +109,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="sistema.ConversaoInvalidaException" project="114110443_Gabriela_Lab05" 
-    file="/114110443_Gabriela_Lab05/src/sistema/ConversaoInvalidaException.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="13" language="java" name="sistema.ConversaoInvalidaException" project="114110443_Gabriela_Lab06" 
+    file="/114110443_Gabriela_Lab06/src/sistema/ConversaoInvalidaException.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1290" y="917"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -118,8 +118,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="usuario.Usuario" project="114110443_Gabriela_Lab05" 
-    file="/114110443_Gabriela_Lab05/src/usuario/Usuario.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="14" language="java" name="usuario.Usuario" project="114110443_Gabriela_Lab06" 
+    file="/114110443_Gabriela_Lab06/src/usuario/Usuario.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="419" y="705"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -127,8 +127,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="usuario.Veterano" project="114110443_Gabriela_Lab05" 
-    file="/114110443_Gabriela_Lab05/src/usuario/Veterano.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="15" language="java" name="usuario.Veterano" project="114110443_Gabriela_Lab06" 
+    file="/114110443_Gabriela_Lab06/src/usuario/Veterano.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="144" y="784"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -136,8 +136,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="usuario.Noob" project="114110443_Gabriela_Lab05" 
-    file="/114110443_Gabriela_Lab05/src/usuario/Noob.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="16" language="java" name="usuario.Noob" project="114110443_Gabriela_Lab06" 
+    file="/114110443_Gabriela_Lab06/src/usuario/Noob.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="144" y="568"/>    
     <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -146,75 +146,89 @@
     </display>  
   </class>  
   <generalization id="17">    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="14"/>  
-  </generalization>  
-  <generalization id="18">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="12"/>  
-  </generalization>  
-  <generalization id="19">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <generalization id="20">    
-    <end type="SOURCE" refId="11"/>    
+    <end type="SOURCE" refId="10"/>    
     <end type="TARGET" refId="8"/>  
   </generalization>  
-  <generalization id="21">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <generalization id="22">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="12"/>  
-  </generalization>  
-  <association id="23">    
+  <association id="18">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="24" name="jogabilidade"/>      
-      <multiplicity id="25" minimum="0" maximum="2147483647"/>    
+      <attribute id="19" name="jogabilidade">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="20" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="false"/>  
   </association>  
-  <generalization id="26">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="8"/>  
+  <generalization id="21">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="1"/>  
   </generalization>  
-  <generalization id="27">    
-    <end type="SOURCE" refId="15"/>    
+  <generalization id="22">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="12"/>  
+  </generalization>  
+  <generalization id="23">    
+    <end type="SOURCE" refId="16"/>    
     <end type="TARGET" refId="14"/>  
   </generalization>  
-  <generalization id="28">    
+  <generalization id="24">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <generalization id="25">    
     <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
-  <association id="29">    
+  <association id="26">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="30" name="fabricaDeJogos"/>      
-      <multiplicity id="31" minimum="0" maximum="1"/>    
+      <attribute id="27" name="fabricaDeJogos">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="28" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="false"/>  
   </association>  
-  <association id="32">    
+  <generalization id="29">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="14"/>  
+  </generalization>  
+  <association id="30">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="33" name="usuarios">        
+      <attribute id="31" name="usuarios">        
         <position height="18" width="50" x="542" y="627"/>      
       </attribute>      
-      <multiplicity id="34" minimum="0" maximum="2147483647"/>    
+      <multiplicity id="32" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="true" multiplicity="false"/>  
   </association>  
-  <association id="35">    
+  <generalization id="33">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <association id="34">    
     <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="36" name="jogosComprados"/>      
-      <multiplicity id="37" minimum="0" maximum="2147483647"/>    
+      <attribute id="35" name="jogosComprados">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="36" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="false"/>  
   </association>  
+  <generalization id="37">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="12"/>  
+  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
