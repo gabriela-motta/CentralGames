@@ -1,6 +1,6 @@
 package sistema;
 
-//114110443 - Gabriela Motta Oliveira: LAB 05 - Turma 3
+//114110443 - Gabriela Motta Oliveira: LAB 06 - Turma 3
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -20,7 +20,6 @@ public class Loja {
 
 	private ArrayList<Usuario> usuarios;
 	private double totalArrecadado;
-	private JogoFactory fabricaDeJogos;
 
 	/**
 	 * Construtor de Loja
@@ -28,87 +27,16 @@ public class Loja {
 	public Loja() {
 		this.usuarios = new ArrayList<Usuario>();
 		this.totalArrecadado = 0;
-		this.fabricaDeJogos = new JogoFactory();
 	}
 
 	/**
-	 * Cria um usuario e adiciona na lista de usuarios da loja
+	 * Adiciona um usuario na lista de usuarios
 	 * 
-	 * @param nome
-	 *            O nome do usuario a ser criado
-	 * @param login
-	 *            O login do usuario a ser criado
-	 * @param tipo
-	 *            O tipo do usuario a ser criado
+	 * @param usuario
+	 *            O usuario a ser adicionado
 	 */
-	public void criaUsuario(String nome, String login, String tipo) {
-		try {
-			if (tipo.equals("Noob")) {
-				Usuario novo = new Noob(nome, login);
-				this.usuarios.add(novo);
-
-			} else if (tipo.equals("Veterano")) {
-				Usuario novo = new Veterano(nome, login);
-				this.usuarios.add(novo);
-			}
-
-		} catch (EntradaException e) {
-			System.out.println(e.getMessage());
-		}
-	}
-
-	/**
-	 * Cria um jogo usando o JogoFactory
-	 * 
-	 * @param nome
-	 *            O nome do jogo
-	 * @param preco
-	 *            O preco do jogo
-	 * @param tipo
-	 *            O tipo do jogo
-	 * @param jogabilidades
-	 *            As jogabilidades do jogo
-	 * @return O jogo criado
-	 */
-	public Jogo criaJogo(String nome, double preco, String tipo,
-			HashSet<Jogabilidade> jogabilidades) {
-		return fabricaDeJogos.criaJogo(nome, preco, tipo, jogabilidades);
-	}
-
-	/**
-	 * Vende um jogo a um usuario, alterando o total arrecadado pela loja, o
-	 * total gasto e a quantidade de dinheiro do usuario
-	 * 
-	 * @param nomeUsuario
-	 *            O nome do usuario
-	 * @param nomeJogo
-	 *            O nome do jogo
-	 * @param tipoJogo
-	 *            O tipo do jogo
-	 * @param precoJogo
-	 *            O preco do jogo
-	 * @param jogabilidades
-	 *            As jogabilidades do jogo
-	 */
-	public void vendeJogo(String nomeUsuario, String nomeJogo, String tipoJogo,
-			double precoJogo, HashSet<Jogabilidade> jogabilidades) {
-		try {
-			for (Usuario user : usuarios) {
-				if (user.getNome().equals(nomeUsuario)) {
-					if (user.getQuantidadeDinheiro() >= precoJogo) {
-						Jogo novoJogo = criaJogo(nomeJogo, precoJogo, tipoJogo,
-								jogabilidades);
-						user.adicionaJogo(novoJogo);
-						this.totalArrecadado = this.totalArrecadado
-								+ user.calculaPreco(precoJogo);
-					}
-				}
-			}
-
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-
+	public void adicionaUsuario(Usuario usuario) {
+		this.usuarios.add(usuario);
 	}
 
 	/**
@@ -126,6 +54,16 @@ public class Loja {
 				user.setQuantidadeDinheiro(quantia);
 			}
 		}
+	}
+
+	/**
+	 * Aumenta o total arrecadado pela loja
+	 * 
+	 * @param valor
+	 *            O valor a ser adicionado no total arrecadado
+	 */
+	public void aumentaTotalArrecadado(double valor) {
+		this.totalArrecadado = this.totalArrecadado + valor;
 	}
 
 	/**
@@ -193,7 +131,8 @@ public class Loja {
 							"Usuario ja e Veterano");
 
 				} else if (user.getX2p() < 1000) {
-					throw new PontosIncompativeisException("Pontos incompativeis para upgrade");
+					throw new PontosIncompativeisException(
+							"Pontos incompativeis para upgrade");
 
 				} else {
 					converte(user, "Veterano");
@@ -211,8 +150,7 @@ public class Loja {
 	 *             Se o usuario ja for Noob ou seus pontos forem incompativeis
 	 *             com a conversao
 	 */
-	public void downgrade(String loginUsuario)
-			throws LogicaException {
+	public void downgrade(String loginUsuario) throws LogicaException {
 		for (Usuario user : usuarios) {
 			if (user.getLogin().equals(loginUsuario)) {
 				if (user instanceof Noob) {

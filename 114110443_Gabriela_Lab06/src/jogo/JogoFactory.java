@@ -1,6 +1,6 @@
 package jogo;
 
-//114110443 - Gabriela Motta Oliveira: LAB 05 - Turma 3
+//114110443 - Gabriela Motta Oliveira: LAB 06 - Turma 3
 
 import java.util.HashSet;
 
@@ -19,16 +19,12 @@ public class JogoFactory {
 	 * @param jogabilidade
 	 *            As jogabilidades do jogo
 	 * @return Um jogo do tipo RPG
+	 * @throws EntradaException
 	 */
 	private Jogo criaRPG(String nome, double preco,
-			HashSet<Jogabilidade> jogabilidade) {
-		try {
-			return new RPG(nome, preco, jogabilidade);
+			HashSet<Jogabilidade> jogabilidade) throws EntradaException {
+		return new RPG(nome, preco, jogabilidade);
 
-		} catch (EntradaException e) {
-			System.out.println(e.getMessage());
-		}
-		return null;
 	}
 
 	/**
@@ -41,16 +37,13 @@ public class JogoFactory {
 	 * @param jogabilidade
 	 *            As jogabilidades do jogo
 	 * @return Um jogo do tipo Luta
+	 * @throws EntradaException
 	 */
 	private Jogo criaLuta(String nome, double preco,
-			HashSet<Jogabilidade> jogabilidade) {
-		try {
-			return new Luta(nome, preco, jogabilidade);
+			HashSet<Jogabilidade> jogabilidade) throws EntradaException {
 
-		} catch (EntradaException e) {
-			System.out.println(e.getMessage());
-		}
-		return null;
+		return new Luta(nome, preco, jogabilidade);
+
 	}
 
 	/**
@@ -63,16 +56,12 @@ public class JogoFactory {
 	 * @param jogabilidade
 	 *            As jogabilidades do jogo
 	 * @return Um jogo do tipo Plataforma
+	 * @throws EntradaException
 	 */
 	private Jogo criaPlataforma(String nome, double preco,
-			HashSet<Jogabilidade> jogabilidade) {
-		try {
-			return new Plataforma(nome, preco, jogabilidade);
+			HashSet<Jogabilidade> jogabilidade) throws EntradaException {
+		return new Plataforma(nome, preco, jogabilidade);
 
-		} catch (EntradaException e) {
-			System.out.println(e.getMessage());
-		}
-		return null;
 	}
 
 	/**
@@ -87,9 +76,10 @@ public class JogoFactory {
 	 * @param jogabilidade
 	 *            As jogabilidades do jogo a ser criado
 	 * @return O jogo criado
+	 * @throws EntradaException
 	 */
 	public Jogo criaJogo(String nome, double preco, String tipo,
-			HashSet<Jogabilidade> jogabilidade) {
+			HashSet<Jogabilidade> jogabilidade) throws EntradaException {
 		if (tipo.equals("Plataforma")) {
 			return criaPlataforma(nome, preco, jogabilidade);
 		} else if (tipo.equals("RPG")) {

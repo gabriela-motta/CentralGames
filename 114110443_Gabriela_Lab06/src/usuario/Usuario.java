@@ -1,19 +1,19 @@
 package usuario;
 
-//114110443 - Gabriela Motta Oliveira: LAB 05 - Turma 3
+//114110443 - Gabriela Motta Oliveira: LAB 06 - Turma 3
 
 import java.util.ArrayList;
 
+import jogo.Jogo;
 import exceptions.DadoInvalidoException;
 import exceptions.EntradaException;
 import exceptions.StringInvalidaException;
-import jogo.Jogo;
 
 public abstract class Usuario {
 
 	private String nome;
 	private String login;
-	private ArrayList<Jogo> jogosComprados;
+	private CatalogoJogos jogosComprados;
 	private double totalGasto;
 	private double quantidadeDinheiro;
 	private int x2p;
@@ -37,7 +37,7 @@ public abstract class Usuario {
 		}
 		this.nome = nome;
 		this.login = login;
-		this.jogosComprados = new ArrayList<Jogo>();
+		this.jogosComprados = new CatalogoJogos();
 		this.totalGasto = 0;
 		this.quantidadeDinheiro = 0;
 		this.x2p = 0;
@@ -52,7 +52,7 @@ public abstract class Usuario {
 	 *            O jogo a ser adicionado
 	 */
 	public void adicionaJogo(Jogo jogo) {
-		this.jogosComprados.add(jogo);
+		this.jogosComprados.adicionaJogo(jogo);
 		this.quantidadeDinheiro = this.quantidadeDinheiro - jogo.getPreco();
 		this.totalGasto = this.totalGasto + jogo.getPreco();
 		this.x2p = (int) (this.x2p + (10 * jogo.getPreco()));
@@ -107,11 +107,11 @@ public abstract class Usuario {
 	}
 
 	public ArrayList<Jogo> getJogosComprados() {
-		return jogosComprados;
+		return jogosComprados.getListaJogos();
 	}
 
 	public void setJogosComprados(ArrayList<Jogo> jogosComprados) {
-		this.jogosComprados = jogosComprados;
+		this.jogosComprados.setListaJogos(jogosComprados);
 	}
 
 	public double getQuantidadeDinheiro() {

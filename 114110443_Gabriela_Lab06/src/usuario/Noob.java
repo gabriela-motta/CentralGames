@@ -1,6 +1,6 @@
 package usuario;
 
-//114110443 - Gabriela Motta Oliveira: LAB 05 - Turma 3
+//114110443 - Gabriela Motta Oliveira: LAB 06 - Turma 3
 
 import exceptions.EntradaException;
 import jogo.Jogabilidade;

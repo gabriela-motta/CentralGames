@@ -1,6 +1,6 @@
 package testes;
 
-//114110443 - Gabriela Motta Oliveira: LAB 05 - Turma 3
+//114110443 - Gabriela Motta Oliveira: LAB 06 - Turma 3
 
 import java.util.HashSet;
 
@@ -10,6 +10,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import exceptions.EntradaException;
 import sistema.Loja;
 import usuario.Noob;
 import usuario.Usuario;
@@ -19,59 +20,45 @@ public class TestaLoja {
 
 	private Loja loja1;
 	private HashSet<Jogabilidade> j1;
+	private Usuario user1;
+	private Usuario user2;
+	private Usuario user3;
+	private Usuario user4;
 
 	@Before
 	public void setUp() {
-		loja1 = new Loja();
-		j1 = new HashSet<>();
-		j1.add(Jogabilidade.ONLINE);
+		try {
+			loja1 = new Loja();
+
+			j1 = new HashSet<>();
+			j1.add(Jogabilidade.ONLINE);
+
+			user1 = new Noob("Maria", "m123");
+			user2 = new Veterano("Joao", "j123");
+			user3 = new Noob("Jose", "zezinho");
+			user4 = new Veterano("Ana", "aninha");
+			
+		} catch (EntradaException e) {
+			Assert.fail();
+		}
 	}
 
 	@Test
 	public void testaConstrutor() {
-		try {
-			Assert.assertEquals(0, loja1.getUsuarios().size());
-			Assert.assertEquals(0, loja1.getTotalArrecadado(), 0.1);
-
-		} catch (Exception e) {
-			Assert.fail();
-		}
-
+		Assert.assertEquals(0, loja1.getUsuarios().size());
+		Assert.assertEquals(0, loja1.getTotalArrecadado(), 0.1);
 	}
 
 	@Test
-	public void testaCriaUsuario() {
-		try {
-			loja1.criaUsuario("Maria", "m123", "Noob");
-			Assert.assertEquals(1, loja1.getUsuarios().size());
-
-		} catch (Exception e) {
-			Assert.fail();
-		}
-	}
-
-	@Test
-	public void testaVendeJogo() {
-		try {
-			loja1.criaUsuario("Maria", "m123", "Noob");
-			loja1.adicionaDinheiro("Maria", 200);
-			loja1.vendeJogo("Maria", "Burrito", "Plataforma", 100, j1);
-			Assert.assertEquals(90, loja1.getTotalArrecadado(), 0.1);
-
-			loja1.criaUsuario("Joao", "j123", "Veterano");
-			loja1.adicionaDinheiro("Joao", 200);
-			loja1.vendeJogo("Joao", "Burrito", "Plataforma", 100, j1);
-			Assert.assertEquals(170, loja1.getTotalArrecadado(), 0.1);
-
-		} catch (Exception e) {
-			Assert.fail();
-		}
+	public void testaAdicionaUsuario() {
+		loja1.adicionaUsuario(user3);
+		loja1.adicionaUsuario(user4);
+		Assert.assertEquals(2, loja1.getUsuarios().size());
 	}
 
 	@Test
 	public void testaAdicionaDinheiro() {
 		try {
-			loja1.criaUsuario("Maria", "m123", "Noob");
 			loja1.adicionaDinheiro("Maria", 250);
 			for (Usuario user : loja1.getUsuarios()) {
 				if (user.getNome().equals("Maria")) {
@@ -90,11 +77,17 @@ public class TestaLoja {
 			Assert.fail();
 		}
 	}
+	
+	@Test
+	public void testaAumentaTotalArrecadado(){
+		loja1.aumentaTotalArrecadado(100);
+		Assert.assertEquals(100, loja1.getTotalArrecadado(), 0.01);
+	}
 
 	@Test
 	public void testaConverte() {
 		try {
-			loja1.criaUsuario("Maria", "m123", "Noob");
+			loja1.adicionaUsuario(user1);
 
 			for (Usuario user : loja1.getUsuarios()) {
 				if (user.getNome().equals("Maria")) {
@@ -109,7 +102,7 @@ public class TestaLoja {
 		}
 
 		try {
-			loja1.criaUsuario("Joao", "j123", "Veterano");
+			loja1.adicionaUsuario(user2);
 
 			for (Usuario user : loja1.getUsuarios()) {
 				if (user.getNome().equals("Joao")) {
@@ -127,7 +120,7 @@ public class TestaLoja {
 	@Test
 	public void testaUpgrade() {
 		try {
-			loja1.criaUsuario("Maria", "m123", "Noob");
+			loja1.adicionaUsuario(user1);
 
 			for (Usuario user : loja1.getUsuarios()) {
 				if (user.getNome().equals("Maria")) {
@@ -143,7 +136,7 @@ public class TestaLoja {
 		}
 
 		try {
-			loja1.criaUsuario("Joao", "j123", "Veterano");
+			loja1.adicionaUsuario(user2);
 
 			for (Usuario user : loja1.getUsuarios()) {
 				if (user.getNome().equals("Joao")) {
@@ -159,7 +152,7 @@ public class TestaLoja {
 		}
 
 		try {
-			loja1.criaUsuario("Jose", "zezinho", "Noob");
+		loja1.adicionaUsuario(user3);
 
 			for (Usuario user : loja1.getUsuarios()) {
 				if (user.getNome().equals("Jose")) {
@@ -179,7 +172,7 @@ public class TestaLoja {
 	@Test
 	public void testaDowngrade() {
 		try {
-			loja1.criaUsuario("Joao", "j123", "Veterano");
+			loja1.adicionaUsuario(user2);
 
 			for (Usuario user : loja1.getUsuarios()) {
 				if (user.getNome().equals("Joao")) {
@@ -195,7 +188,7 @@ public class TestaLoja {
 		}
 
 		try {
-			loja1.criaUsuario("Maria", "m123", "Noob");
+			loja1.adicionaUsuario(user1);
 
 			for (Usuario user : loja1.getUsuarios()) {
 				if (user.getNome().equals("Maria")) {
@@ -211,15 +204,15 @@ public class TestaLoja {
 		}
 
 		try {
-			loja1.criaUsuario("Jose", "zezinho", "Veterano");
+			loja1.adicionaUsuario(user4);
 
 			for (Usuario user : loja1.getUsuarios()) {
-				if (user.getNome().equals("Jose")) {
+				if (user.getNome().equals("Ana")) {
 					user.setX2p(1001);
 				}
 			}
 
-			loja1.downgrade("zezinho");
+			loja1.downgrade("aninha");
 			Assert.fail("Esperava excecao de pontos insuficientes");
 
 		} catch (Exception e) {
@@ -231,10 +224,9 @@ public class TestaLoja {
 	@Test
 	public void testaToString() {
 		try {
-			loja1.criaUsuario("Maria", "m123", "Noob");
-			loja1.adicionaDinheiro("Maria", 200);
-			loja1.vendeJogo("Maria", "Burrito", "Plataforma", 100, j1);
-
+			loja1.aumentaTotalArrecadado(100);
+			loja1.adicionaUsuario(user1);
+			
 			final String EOL = System.getProperty("line.separator");
 
 			String mensagemUsuarios = "";
@@ -244,7 +236,7 @@ public class TestaLoja {
 
 			String mensagem = "=== Central P2-CG ===" + EOL + mensagemUsuarios
 					+ "-------------------------------" + EOL
-					+ "Total arrecadado com vendas de jogos: R$ 90.0";
+					+ "Total arrecadado com vendas de jogos: R$ 100.0";
 			Assert.assertEquals(mensagem, loja1.toString());
 
 		} catch (Exception e) {

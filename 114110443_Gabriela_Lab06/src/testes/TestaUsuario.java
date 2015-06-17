@@ -1,6 +1,6 @@
 package testes;
 
-//114110443 - Gabriela Motta Oliveira: LAB 05 - Turma 3
+//114110443 - Gabriela Motta Oliveira: LAB 06 - Turma 3
 
 import java.util.HashSet;
 
@@ -86,7 +86,8 @@ public class TestaUsuario {
 			Assert.fail("Esperava excecao de dado invalido");
 
 		} catch (EntradaException e) {
-			Assert.assertEquals("String especificada e invalida", e.getMessage());
+			Assert.assertEquals("String especificada e invalida",
+					e.getMessage());
 		}
 
 		try {
@@ -94,7 +95,8 @@ public class TestaUsuario {
 			Assert.fail("Esperava excecao de dado invalido");
 
 		} catch (EntradaException e) {
-			Assert.assertEquals("String especificada e invalida", e.getMessage());
+			Assert.assertEquals("String especificada e invalida",
+					e.getMessage());
 		}
 	}
 
