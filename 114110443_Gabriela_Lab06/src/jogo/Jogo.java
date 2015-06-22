@@ -8,7 +8,7 @@ import exceptions.DadoInvalidoException;
 import exceptions.EntradaException;
 import exceptions.StringInvalidaException;
 
-public abstract class Jogo {
+public abstract class Jogo implements Comparable<Jogo> {
 
 	private String nome;
 	private double preco;
@@ -43,6 +43,17 @@ public abstract class Jogo {
 		this.quantidadeJogada = 0;
 		this.quantidadeZerada = 0;
 		this.jogabilidade = jogabilidade;
+	}
+
+	public int compareTo(Jogo outroJogo) {
+		int comparacao = this.nome.compareTo(outroJogo.getNome());
+		if (comparacao > 0) {
+			return 1;
+		} else if (comparacao == 0) {
+			return 0;
+		} else {
+			return -1;
+		}
 	}
 
 	/**

@@ -35,8 +35,8 @@ public class TestaUsuario {
 	@Before
 	public void setUp() {
 		try {
-			user1 = new Noob("Maria", "m123");
-			user2 = new Veterano("Joao", "j123");
+			user1 = new Usuario("Maria", "m123");
+			user2 = new Usuario("Joao", "j123");
 
 			j1 = new HashSet<>();
 			j1.add(Jogabilidade.COMPETITIVO);
@@ -82,7 +82,7 @@ public class TestaUsuario {
 	@Test
 	public void testaUsuarioInvalido() {
 		try {
-			user3 = new Noob("", "abc");
+			user3 = new Usuario("", "abc");
 			Assert.fail("Esperava excecao de dado invalido");
 
 		} catch (EntradaException e) {
@@ -91,7 +91,7 @@ public class TestaUsuario {
 		}
 
 		try {
-			user4 = new Veterano("Fulano", "");
+			user4 = new Usuario("Fulano", "");
 			Assert.fail("Esperava excecao de dado invalido");
 
 		} catch (EntradaException e) {
@@ -101,10 +101,35 @@ public class TestaUsuario {
 	}
 
 	@Test
+	public void testaGanhouPartida() {
+		try {
+			user1.adicionaJogo(jogo2);
+			user1.ganhouPartida("Fight", 4000, false);
+			Assert.assertEquals(514, user1.getX2p());
+			Assert.assertTrue(user1.getJogador() instanceof Noob);
+
+		} catch (Exception e) {
+			Assert.fail();
+		}
+	}
+
+	@Test
+	public void testaPerdeuPartida() {
+		try {
+			user1.adicionaJogo(jogo1);
+			user1.perdeuPartida("Burrito", 500, true);
+			Assert.assertEquals(1000, user1.getX2p());
+			Assert.assertTrue(user1.getJogador() instanceof Veterano);
+			
+		} catch (Exception e) {
+			Assert.fail();
+		}
+	}
+
+	@Test
 	public void testaCalculaPreco() {
 		try {
 			Assert.assertEquals(90.0, user1.calculaPreco(100), 0.1);
-			Assert.assertEquals(80.0, user2.calculaPreco(100), 0.1);
 
 		} catch (Exception e) {
 			Assert.fail();
@@ -120,6 +145,7 @@ public class TestaUsuario {
 			Assert.assertEquals(1, user1.getJogosComprados().size());
 			Assert.assertEquals(150, user1.getQuantidadeDinheiro(), 0.1);
 			Assert.assertEquals(1000, user1.getX2p());
+			Assert.assertTrue(user1.getJogador() instanceof Veterano);
 
 		} catch (Exception e) {
 			Assert.fail();
@@ -133,8 +159,8 @@ public class TestaUsuario {
 			user1.adicionaJogo(jogo1);
 			user1.adicionaJogo(jogo2);
 
-			user1.punir("Burrito", 500, true);
-			user1.recompensar("Fight", 4000, false);
+			user1.perdeuPartida("Burrito", 500, true);
+			user1.ganhouPartida("Fight", 4000, false);
 
 			final String EOL = System.getProperty("line.separator");
 			String mensagemJogos = "";
@@ -142,9 +168,9 @@ public class TestaUsuario {
 				mensagemJogos = mensagemJogos + j.toString() + EOL;
 			}
 			String mensagem = "m123" + EOL + "Maria" + EOL
-					+ "Jogador Noob: 1514 x2p" + EOL + "Lista de Jogos:" + EOL
-					+ mensagemJogos + "Total de preco dos jogos: R$ 150.0"
-					+ EOL;
+					+ "Jogador Veterano: 1514 x2p" + EOL + "Lista de Jogos:"
+					+ EOL + mensagemJogos
+					+ "Total de preco dos jogos: R$ 150.0" + EOL;
 			Assert.assertEquals(mensagem, user1.toString());
 
 		} catch (Exception e) {

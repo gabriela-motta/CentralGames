@@ -9,14 +9,14 @@ import exceptions.DadoInvalidoException;
 import exceptions.EntradaException;
 import exceptions.StringInvalidaException;
 
-public abstract class Usuario {
+public class Usuario implements Comparable<Usuario> {
 
 	private String nome;
 	private String login;
 	private CatalogoJogos jogosComprados;
 	private double totalGasto;
 	private double quantidadeDinheiro;
-	private int x2p;
+	private Jogador jogador;
 
 	/**
 	 * Construtor de Usuario
@@ -40,7 +40,17 @@ public abstract class Usuario {
 		this.jogosComprados = new CatalogoJogos();
 		this.totalGasto = 0;
 		this.quantidadeDinheiro = 0;
-		this.x2p = 0;
+		this.jogador = new Noob();
+	}
+
+	public int compareTo(Usuario outroUsuario) {
+		if (this.jogador.getX2p() > outroUsuario.getJogador().getX2p()) {
+			return 1;
+		} else if (this.jogador.getX2p() == outroUsuario.getJogador().getX2p()) {
+			return 0;
+		} else {
+			return -1;
+		}
 	}
 
 	/**
@@ -55,24 +65,46 @@ public abstract class Usuario {
 		this.jogosComprados.adicionaJogo(jogo);
 		this.quantidadeDinheiro = this.quantidadeDinheiro - jogo.getPreco();
 		this.totalGasto = this.totalGasto + jogo.getPreco();
-		this.x2p = (int) (this.x2p + (10 * jogo.getPreco()));
+		this.jogador.setX2p((int) (this.jogador.getX2p() + (10 * jogo
+				.getPreco())));
+
+		if (getX2p() > 1000) {
+			viraVeterano();
+
+		} else {
+			viraNoob();
+		}
 	}
 
-	/**
-	 * Recompensa o usuario adicionando x2p de acordo com a jogabilidade do jogo
-	 * 
-	 * @param nomeJogo
-	 *            O nome do jogo
-	 */
-	public abstract void recompensar(String nomeJogo, int score, boolean zerou);
+	public void ganhouPartida(String nomeJogo, int score, boolean zerou) {
+		for (Jogo jogo : getJogosComprados()) {
+			if (jogo.getNome().equals(nomeJogo)) {
+				this.jogador.ganhouPartida(jogo, score, zerou);
+			}
+		}
 
-	/**
-	 * Pune o usuario removendo x2p de acordo com a jogabilidade do jogo
-	 * 
-	 * @param nomeJogo
-	 *            O nome do jogo
-	 */
-	public abstract void punir(String nomeJogo, int score, boolean zerou);
+		if (getX2p() > 1000) {
+			viraVeterano();
+
+		} else {
+			viraNoob();
+		}
+	}
+
+	public void perdeuPartida(String nomeJogo, int score, boolean zerou) {
+		for (Jogo jogo : getJogosComprados()) {
+			if (jogo.getNome().equals(nomeJogo)) {
+				this.jogador.perdeuPartida(jogo, score, zerou);
+			}
+		}
+
+		if (getX2p() > 1000) {
+			viraVeterano();
+
+		} else {
+			viraNoob();
+		}
+	}
 
 	/**
 	 * Calcula quanto o usuario vai pagar em um jogo usando descontos
@@ -81,13 +113,40 @@ public abstract class Usuario {
 	 *            O preco do jogo
 	 * @return O valor a pagar com desconto
 	 */
-	public abstract double calculaPreco(double preco);
+	public double calculaPreco(double preco) {
+		return this.jogador.calculaPreco(preco);
+	}
+
+	public void viraNoob() {
+		int x2p = getX2p();
+		this.jogador = new Noob();
+		setX2p(x2p);
+	}
+
+	public void viraVeterano() {
+		int x2p = getX2p();
+		this.jogador = new Veterano();
+		setX2p(x2p);
+	}
 
 	/**
 	 * Retorna uma String com informacoes do usuario
 	 */
 	@Override
-	public abstract String toString();
+	public String toString() {
+		final String EOL = System.getProperty("line.separator");
+
+		String mensagemJogos = "";
+		for (Jogo j : getJogosComprados()) {
+			mensagemJogos = mensagemJogos + j.toString() + EOL;
+		}
+
+		String mensagemJogador = this.jogador.toString();
+
+		return getLogin() + EOL + getNome() + EOL + mensagemJogador + EOL
+				+ "Lista de Jogos:" + EOL + mensagemJogos
+				+ "Total de preco dos jogos: R$ " + getTotalGasto() + EOL;
+	}
 
 	// GETTERS E SETTERS
 	public String getNome() {
@@ -131,11 +190,23 @@ public abstract class Usuario {
 	}
 
 	public int getX2p() {
-		return x2p;
+		return this.jogador.getX2p();
 	}
 
 	public void setX2p(int x2p) {
-		this.x2p = x2p;
+		this.jogador.setX2p(x2p);
+	}
+
+	public Jogador getJogador() {
+		return jogador;
+	}
+
+	public void setJogador(Jogador jogador) {
+		this.jogador = jogador;
+	}
+
+	public void setJogosComprados(CatalogoJogos jogosComprados) {
+		this.jogosComprados = jogosComprados;
 	}
 
 	@Override

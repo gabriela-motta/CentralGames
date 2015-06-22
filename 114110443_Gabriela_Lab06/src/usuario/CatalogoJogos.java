@@ -3,16 +3,43 @@ package usuario;
 //114110443 - Gabriela Motta Oliveira: LAB 06 - Turma 3
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 import jogo.Jogabilidade;
 import jogo.Jogo;
 
+import comparacoes.DesempenhoCompare;
+import comparacoes.ExperienciaCompare;
+import comparacoes.VicioCompare;
+
 public class CatalogoJogos {
 
-	private ArrayList<Jogo> listaJogos;
+	private List<Jogo> listaJogos;
 
 	public CatalogoJogos() {
 		this.listaJogos = new ArrayList<Jogo>();
+	}
+
+	public void ordenaJogos(TiposOrdenacao tipo) {
+		Comparator<Jogo> comparator;
+
+		if (tipo.equals(TiposOrdenacao.DEFAULT)) {
+			Collections.sort(listaJogos);
+
+		} else if (tipo.equals(TiposOrdenacao.VICIO)) {
+			comparator = new VicioCompare();
+			Collections.sort(listaJogos, comparator);
+
+		} else if (tipo.equals(TiposOrdenacao.EXPERIENCIA)) {
+			comparator = new ExperienciaCompare();
+			Collections.sort(listaJogos, comparator);
+
+		} else if (tipo.equals(TiposOrdenacao.DESEMPENHO)) {
+			comparator = new DesempenhoCompare();
+			Collections.sort(listaJogos, comparator);
+		}
 	}
 
 	public void adicionaJogo(Jogo jogo) {
@@ -70,7 +97,7 @@ public class CatalogoJogos {
 	}
 
 	public ArrayList<Jogo> getListaJogos() {
-		return listaJogos;
+		return (ArrayList<Jogo>) listaJogos;
 	}
 
 	public void setListaJogos(ArrayList<Jogo> listaJogos) {

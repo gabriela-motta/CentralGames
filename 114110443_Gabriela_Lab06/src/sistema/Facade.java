@@ -13,9 +13,9 @@ public class Facade {
 		this.controller = new Controller();
 	}
 
-	public void criaUsuario(String nome, String login, String tipo) {
+	public void criaUsuario(String nome, String login) {
 		try {
-			this.controller.criaUsuario(nome, login, tipo);
+			this.controller.criaUsuario(nome, login);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

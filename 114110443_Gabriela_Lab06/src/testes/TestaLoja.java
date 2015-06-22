@@ -33,11 +33,11 @@ public class TestaLoja {
 			j1 = new HashSet<>();
 			j1.add(Jogabilidade.ONLINE);
 
-			user1 = new Noob("Maria", "m123");
-			user2 = new Veterano("Joao", "j123");
-			user3 = new Noob("Jose", "zezinho");
-			user4 = new Veterano("Ana", "aninha");
-			
+			user1 = new Usuario("Maria", "m123");
+			user2 = new Usuario("Joao", "j123");
+			user3 = new Usuario("Jose", "zezinho");
+			user4 = new Usuario("Ana", "aninha");
+
 		} catch (EntradaException e) {
 			Assert.fail();
 		}
@@ -77,147 +77,34 @@ public class TestaLoja {
 			Assert.fail();
 		}
 	}
-	
+
 	@Test
-	public void testaAumentaTotalArrecadado(){
+	public void testaAumentaTotalArrecadado() {
 		loja1.aumentaTotalArrecadado(100);
 		Assert.assertEquals(100, loja1.getTotalArrecadado(), 0.01);
 	}
 
 	@Test
-	public void testaConverte() {
+	public void testaOrdenaUsuarios() {
 		try {
+			user1.setX2p(1000);
+			user2.setX2p(300);
+			user3.setX2p(1);
+			user4.setX2p(800);
+
 			loja1.adicionaUsuario(user1);
-
-			for (Usuario user : loja1.getUsuarios()) {
-				if (user.getNome().equals("Maria")) {
-					loja1.converte(user, "Veterano");
-				}
-			}
-
-			Assert.assertTrue(loja1.getUsuarios().get(0) instanceof Veterano);
-
-		} catch (Exception e) {
-			Assert.fail();
-		}
-
-		try {
 			loja1.adicionaUsuario(user2);
-
-			for (Usuario user : loja1.getUsuarios()) {
-				if (user.getNome().equals("Joao")) {
-					loja1.converte(user, "Noob");
-				}
-			}
-
-			Assert.assertTrue(loja1.getUsuarios().get(1) instanceof Noob);
-
-		} catch (Exception e) {
-			Assert.fail();
-		}
-	}
-
-	@Test
-	public void testaUpgrade() {
-		try {
-			loja1.adicionaUsuario(user1);
-
-			for (Usuario user : loja1.getUsuarios()) {
-				if (user.getNome().equals("Maria")) {
-					user.setX2p(1000);
-				}
-			}
-
-			loja1.upgrade("m123");
-			Assert.assertTrue(loja1.getUsuarios().get(0) instanceof Veterano);
-
-		} catch (Exception e) {
-			Assert.fail();
-		}
-
-		try {
-			loja1.adicionaUsuario(user2);
-
-			for (Usuario user : loja1.getUsuarios()) {
-				if (user.getNome().equals("Joao")) {
-					user.setX2p(1000);
-				}
-			}
-
-			loja1.upgrade("j123");
-			Assert.fail("Esperava excecao de conversao invalida");
-
-		} catch (Exception e) {
-			Assert.assertEquals("Usuario ja e Veterano", e.getMessage());
-		}
-
-		try {
-		loja1.adicionaUsuario(user3);
-
-			for (Usuario user : loja1.getUsuarios()) {
-				if (user.getNome().equals("Jose")) {
-					user.setX2p(999);
-				}
-			}
-
-			loja1.upgrade("zezinho");
-			Assert.fail("Esperava excecao de pontos insuficientes");
-
-		} catch (Exception e) {
-			Assert.assertEquals("Pontos incompativeis para upgrade",
-					e.getMessage());
-		}
-	}
-
-	@Test
-	public void testaDowngrade() {
-		try {
-			loja1.adicionaUsuario(user2);
-
-			for (Usuario user : loja1.getUsuarios()) {
-				if (user.getNome().equals("Joao")) {
-					user.setX2p(999);
-				}
-			}
-
-			loja1.downgrade("j123");
-			Assert.assertTrue(loja1.getUsuarios().get(0) instanceof Noob);
-
-		} catch (Exception e) {
-			Assert.fail();
-		}
-
-		try {
-			loja1.adicionaUsuario(user1);
-
-			for (Usuario user : loja1.getUsuarios()) {
-				if (user.getNome().equals("Maria")) {
-					user.setX2p(1000);
-				}
-			}
-
-			loja1.downgrade("m123");
-			Assert.fail("Esperava excecao de conversao invalida");
-
-		} catch (Exception e) {
-			Assert.assertEquals("Usuario ja e Noob", e.getMessage());
-		}
-
-		try {
+			loja1.adicionaUsuario(user3);
 			loja1.adicionaUsuario(user4);
 
-			for (Usuario user : loja1.getUsuarios()) {
-				if (user.getNome().equals("Ana")) {
-					user.setX2p(1001);
-				}
-			}
-
-			loja1.downgrade("aninha");
-			Assert.fail("Esperava excecao de pontos insuficientes");
+			loja1.ordenaUsuarios();
+			Assert.assertEquals(user3, loja1.getUsuarios().get(0));
+			Assert.assertEquals(user2, loja1.getUsuarios().get(1));
+			Assert.assertEquals(user4, loja1.getUsuarios().get(2));
+			Assert.assertEquals(user1, loja1.getUsuarios().get(3));
 
 		} catch (Exception e) {
-			Assert.assertEquals("Pontos incompativeis para downgrade",
-					e.getMessage());
+			Assert.fail();
 		}
 	}
 
@@ -226,7 +113,7 @@ public class TestaLoja {
 		try {
 			loja1.aumentaTotalArrecadado(100);
 			loja1.adicionaUsuario(user1);
-			
+
 			final String EOL = System.getProperty("line.separator");
 
 			String mensagemUsuarios = "";

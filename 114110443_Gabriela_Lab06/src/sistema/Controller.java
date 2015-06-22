@@ -8,23 +8,19 @@ import jogo.Jogabilidade;
 import jogo.Jogo;
 import jogo.JogoFactory;
 import usuario.Usuario;
-import usuario.UsuarioFactory;
 import exceptions.EntradaException;
 
 public class Controller {
-	private UsuarioFactory fabricaDeUsuarios;
 	private JogoFactory fabricaDeJogos;
 	private Loja loja;
 
 	public Controller() {
-		this.fabricaDeUsuarios = new UsuarioFactory();
 		this.fabricaDeJogos = new JogoFactory();
 		this.loja = new Loja();
 	}
 
-	public void criaUsuario(String nome, String login, String tipo)
-			throws EntradaException {
-		Usuario novo = this.fabricaDeUsuarios.criaUsuario(nome, login, tipo);
+	public void criaUsuario(String nome, String login) throws EntradaException {
+		Usuario novo = new Usuario(nome, login);
 		this.loja.adicionaUsuario(novo);
 	}
 
@@ -54,4 +50,7 @@ public class Controller {
 		this.loja.adicionaDinheiro(nome, valor);
 	}
 
+	public void top5() {
+
+	}
 }
