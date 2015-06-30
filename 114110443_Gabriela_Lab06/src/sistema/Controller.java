@@ -24,7 +24,7 @@ public class Controller {
 		this.loja.adicionaUsuario(novo);
 	}
 
-	public Jogo criaJogo(String nomeJogo, double precoJogo, String tipo,
+	private Jogo criaJogo(String nomeJogo, double precoJogo, String tipo,
 			HashSet<Jogabilidade> jogabilidades) throws EntradaException {
 		return this.fabricaDeJogos.criaJogo(nomeJogo, precoJogo, tipo,
 				jogabilidades);
@@ -50,7 +50,13 @@ public class Controller {
 		this.loja.adicionaDinheiro(nome, valor);
 	}
 
-	public void top5() {
-
+	public Usuario[] top5() {
+		int tamanho = this.loja.getUsuarios().size();
+		Usuario[] tops = new Usuario[5];
+		this.loja.ordenaUsuarios();
+		for (int i = tamanho - 5; i == tamanho; i++) {
+			tops[i] = this.loja.getUsuarios().get(i);
+		}
+		return tops;
 	}
 }

@@ -74,7 +74,8 @@ public class TestaJogo {
 			Assert.fail("Esperava excecao de dado invalido");
 
 		} catch (EntradaException e) {
-			Assert.assertEquals("String especificada e invalida", e.getMessage());
+			Assert.assertEquals("String especificada e invalida",
+					e.getMessage());
 		}
 
 		try {

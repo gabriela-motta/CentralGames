@@ -15,8 +15,8 @@ public class Veterano extends Jogador {
 	}
 
 	@Override
-	public void ganhouPartida(Jogo jogo, int score, boolean zerou) {
-		int pontos = getX2p();
+	public int ganhouPartida(Jogo jogo, int score, boolean zerou) {
+		int pontos = 0;
 		pontos = pontos + jogo.joga(score, zerou);
 
 		if (jogo.getJogabilidade().contains(Jogabilidade.ONLINE)) {
@@ -25,12 +25,12 @@ public class Veterano extends Jogador {
 		if (jogo.getJogabilidade().contains(Jogabilidade.COOPERATIVO)) {
 			pontos = pontos + 20;
 		}
-		setX2p(pontos);
+		return pontos;
 	}
 
 	@Override
-	public void perdeuPartida(Jogo jogo, int score, boolean zerou) {
-		int pontos = getX2p();
+	public int perdeuPartida(Jogo jogo, int score, boolean zerou) {
+		int pontos = 0;
 		pontos = pontos + jogo.joga(score, zerou);
 
 		if (jogo.getJogabilidade().contains(Jogabilidade.COMPETITIVO)) {
@@ -39,11 +39,11 @@ public class Veterano extends Jogador {
 		if (jogo.getJogabilidade().contains(Jogabilidade.COOPERATIVO)) {
 			pontos = pontos - 20;
 		}
-		setX2p(pontos);
+		return pontos;
 	}
 
+	@Override
 	public String toString() {
-		return "Jogador Veterano: " + getX2p() + " x2p";
+		return "Jogador Veterano: ";
 	}
-
 }

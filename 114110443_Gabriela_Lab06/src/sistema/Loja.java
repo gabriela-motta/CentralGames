@@ -5,14 +5,7 @@ package sistema;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import jogo.Jogo;
-import usuario.Noob;
 import usuario.Usuario;
-import usuario.Veterano;
-import exceptions.ConversaoInvalidaException;
-import exceptions.EntradaException;
-import exceptions.LogicaException;
-import exceptions.PontosIncompativeisException;
 
 public class Loja {
 

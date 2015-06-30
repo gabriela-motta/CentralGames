@@ -35,4 +35,12 @@ public class Facade {
 	public void adicionaDinheiro(String nome, double valor) {
 		this.controller.adicionaDinheiro(nome, valor);
 	}
+
+	public void imprimeTop5() {
+		try {
+			System.out.println(this.controller.top5());
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
 }

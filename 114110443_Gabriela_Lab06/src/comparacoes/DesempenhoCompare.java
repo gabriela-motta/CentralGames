@@ -1,5 +1,7 @@
 package comparacoes;
 
+//114110443 - Gabriela Motta Oliveira: LAB 06 - Turma 3
+
 import java.util.Comparator;
 
 import jogo.Jogo;

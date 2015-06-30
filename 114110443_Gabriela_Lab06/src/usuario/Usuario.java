@@ -16,6 +16,7 @@ public class Usuario implements Comparable<Usuario> {
 	private CatalogoJogos jogosComprados;
 	private double totalGasto;
 	private double quantidadeDinheiro;
+	private int x2p;
 	private Jogador jogador;
 
 	/**
@@ -40,13 +41,14 @@ public class Usuario implements Comparable<Usuario> {
 		this.jogosComprados = new CatalogoJogos();
 		this.totalGasto = 0;
 		this.quantidadeDinheiro = 0;
+		this.x2p = 0;
 		this.jogador = new Noob();
 	}
 
 	public int compareTo(Usuario outroUsuario) {
-		if (this.jogador.getX2p() > outroUsuario.getJogador().getX2p()) {
+		if (this.x2p > outroUsuario.getX2p()) {
 			return 1;
-		} else if (this.jogador.getX2p() == outroUsuario.getJogador().getX2p()) {
+		} else if (this.x2p == outroUsuario.getX2p()) {
 			return 0;
 		} else {
 			return -1;
@@ -65,10 +67,9 @@ public class Usuario implements Comparable<Usuario> {
 		this.jogosComprados.adicionaJogo(jogo);
 		this.quantidadeDinheiro = this.quantidadeDinheiro - jogo.getPreco();
 		this.totalGasto = this.totalGasto + jogo.getPreco();
-		this.jogador.setX2p((int) (this.jogador.getX2p() + (10 * jogo
-				.getPreco())));
+		this.x2p = (int) (this.x2p + (10 * jogo.getPreco()));
 
-		if (getX2p() > 1000) {
+		if (getX2p() >= 1000) {
 			viraVeterano();
 
 		} else {
@@ -79,11 +80,12 @@ public class Usuario implements Comparable<Usuario> {
 	public void ganhouPartida(String nomeJogo, int score, boolean zerou) {
 		for (Jogo jogo : getJogosComprados()) {
 			if (jogo.getNome().equals(nomeJogo)) {
-				this.jogador.ganhouPartida(jogo, score, zerou);
+				this.x2p = this.x2p
+						+ this.jogador.ganhouPartida(jogo, score, zerou);
 			}
 		}
 
-		if (getX2p() > 1000) {
+		if (getX2p() >= 1000) {
 			viraVeterano();
 
 		} else {
@@ -94,11 +96,12 @@ public class Usuario implements Comparable<Usuario> {
 	public void perdeuPartida(String nomeJogo, int score, boolean zerou) {
 		for (Jogo jogo : getJogosComprados()) {
 			if (jogo.getNome().equals(nomeJogo)) {
-				this.jogador.perdeuPartida(jogo, score, zerou);
+				this.x2p = this.x2p
+						+ this.jogador.perdeuPartida(jogo, score, zerou);
 			}
 		}
 
-		if (getX2p() > 1000) {
+		if (getX2p() >= 1000) {
 			viraVeterano();
 
 		} else {
@@ -118,15 +121,11 @@ public class Usuario implements Comparable<Usuario> {
 	}
 
 	public void viraNoob() {
-		int x2p = getX2p();
 		this.jogador = new Noob();
-		setX2p(x2p);
 	}
 
 	public void viraVeterano() {
-		int x2p = getX2p();
 		this.jogador = new Veterano();
-		setX2p(x2p);
 	}
 
 	/**
@@ -143,8 +142,8 @@ public class Usuario implements Comparable<Usuario> {
 
 		String mensagemJogador = this.jogador.toString();
 
-		return getLogin() + EOL + getNome() + EOL + mensagemJogador + EOL
-				+ "Lista de Jogos:" + EOL + mensagemJogos
+		return getLogin() + EOL + getNome() + EOL + mensagemJogador + this.x2p
+				+ " x2p" + EOL + "Lista de Jogos:" + EOL + mensagemJogos
 				+ "Total de preco dos jogos: R$ " + getTotalGasto() + EOL;
 	}
 
@@ -190,11 +189,11 @@ public class Usuario implements Comparable<Usuario> {
 	}
 
 	public int getX2p() {
-		return this.jogador.getX2p();
+		return this.x2p;
 	}
 
 	public void setX2p(int x2p) {
-		this.jogador.setX2p(x2p);
+		this.x2p = x2p;
 	}
 
 	public Jogador getJogador() {

@@ -10,8 +10,8 @@ public class Noob extends Jogador {
 	private static final double DESCONTO = 0.1;
 
 	@Override
-	public void ganhouPartida(Jogo jogo, int score, boolean zerou) {
-		int pontos = getX2p();
+	public int ganhouPartida(Jogo jogo, int score, boolean zerou) {
+		int pontos = 0;
 		pontos = pontos + jogo.joga(score, zerou);
 
 		if (jogo.getJogabilidade().contains(Jogabilidade.OFFLINE)) {
@@ -20,12 +20,12 @@ public class Noob extends Jogador {
 		if (jogo.getJogabilidade().contains(Jogabilidade.MULTIPLAYER)) {
 			pontos = pontos + 10;
 		}
-		setX2p(pontos);
+		return pontos;
 	}
 
 	@Override
-	public void perdeuPartida(Jogo jogo, int score, boolean zerou) {
-		int pontos = getX2p();
+	public int perdeuPartida(Jogo jogo, int score, boolean zerou) {
+		int pontos = 0;
 		pontos = pontos + jogo.joga(score, zerou);
 
 		if (jogo.getJogabilidade().contains(Jogabilidade.ONLINE)) {
@@ -37,7 +37,7 @@ public class Noob extends Jogador {
 		if (jogo.getJogabilidade().contains(Jogabilidade.COOPERATIVO)) {
 			pontos = pontos - 50;
 		}
-		setX2p(pontos);
+		return pontos;
 	}
 
 	public double calculaPreco(double preco) {
@@ -47,7 +47,6 @@ public class Noob extends Jogador {
 
 	@Override
 	public String toString() {
-		return "Jogador Noob: " + getX2p() + " x2p";
+		return "Jogador Noob: ";
 	}
-
 }

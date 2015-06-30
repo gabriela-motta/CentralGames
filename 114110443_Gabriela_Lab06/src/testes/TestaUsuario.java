@@ -118,18 +118,8 @@ public class TestaUsuario {
 		try {
 			user1.adicionaJogo(jogo1);
 			user1.perdeuPartida("Burrito", 500, true);
-			Assert.assertEquals(1000, user1.getX2p());
+			Assert.assertEquals(1010, user1.getX2p());
 			Assert.assertTrue(user1.getJogador() instanceof Veterano);
-			
-		} catch (Exception e) {
-			Assert.fail();
-		}
-	}
-
-	@Test
-	public void testaCalculaPreco() {
-		try {
-			Assert.assertEquals(90.0, user1.calculaPreco(100), 0.1);
 
 		} catch (Exception e) {
 			Assert.fail();
@@ -153,6 +143,16 @@ public class TestaUsuario {
 	}
 
 	@Test
+	public void testaCalculaPreco() {
+		try {
+			Assert.assertEquals(90.0, user1.calculaPreco(100), 0.1);
+
+		} catch (Exception e) {
+			Assert.fail();
+		}
+	}
+
+	@Test
 	public void testaToString() {
 		try {
 			user1.setQuantidadeDinheiro(2500);
@@ -168,7 +168,7 @@ public class TestaUsuario {
 				mensagemJogos = mensagemJogos + j.toString() + EOL;
 			}
 			String mensagem = "m123" + EOL + "Maria" + EOL
-					+ "Jogador Veterano: 1514 x2p" + EOL + "Lista de Jogos:"
+					+ "Jogador Veterano: 1524 x2p" + EOL + "Lista de Jogos:"
 					+ EOL + mensagemJogos
 					+ "Total de preco dos jogos: R$ 150.0" + EOL;
 			Assert.assertEquals(mensagem, user1.toString());

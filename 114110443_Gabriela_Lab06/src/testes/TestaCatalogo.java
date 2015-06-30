@@ -110,31 +110,31 @@ public class TestaCatalogo {
 			Assert.fail();
 		}
 	}
-	
+
 	@Test
-	public void testaOrdenaJogos(){
-		try{
+	public void testaOrdenaJogos() {
+		try {
 			catalogo.ordenaJogos(TiposOrdenacao.DEFAULT);
 			Assert.assertEquals(jogo1, catalogo.getListaJogos().get(0));
 			Assert.assertEquals(jogo2, catalogo.getListaJogos().get(1));
 			Assert.assertEquals(jogo3, catalogo.getListaJogos().get(2));
-			
+
 			catalogo.ordenaJogos(TiposOrdenacao.VICIO);
 			Assert.assertEquals(jogo1, catalogo.getListaJogos().get(0));
 			Assert.assertEquals(jogo3, catalogo.getListaJogos().get(1));
 			Assert.assertEquals(jogo2, catalogo.getListaJogos().get(2));
-			
+
 			catalogo.ordenaJogos(TiposOrdenacao.EXPERIENCIA);
 			Assert.assertEquals(jogo1, catalogo.getListaJogos().get(0));
 			Assert.assertEquals(jogo2, catalogo.getListaJogos().get(1));
 			Assert.assertEquals(jogo3, catalogo.getListaJogos().get(2));
-			
+
 			catalogo.ordenaJogos(TiposOrdenacao.DESEMPENHO);
 			Assert.assertEquals(jogo2, catalogo.getListaJogos().get(0));
 			Assert.assertEquals(jogo3, catalogo.getListaJogos().get(1));
 			Assert.assertEquals(jogo1, catalogo.getListaJogos().get(2));
-			
-		}catch (Exception e){
+
+		} catch (Exception e) {
 			Assert.fail();
 		}
 	}
